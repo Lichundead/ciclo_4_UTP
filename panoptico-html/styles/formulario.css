@@ -1,0 +1,39 @@
+#panel-central {
+  display: flex;
+  justify-content: center;
+}
+
+header img {
+  background-color: #5271ff;
+}
+
+body {
+  /*     heigh:665px; */
+  background-image: url("../styles/imagenes/logo.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #069B6C;
+}
+
+
+#div-formulario {
+  min-width: 35%;
+  opacity: 88%;
+  background-color: white;
+  border-radius: 6%;
+}
+
+#div-formulario b {
+  font-size: x-large;
+
+}
+
+#btn-ok {
+  text-decoration: none;
+}
+
+.card-body input {
+  background-color: #d0eeff;
+  /*  #5271ff */
+
+}
