@@ -9,6 +9,8 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+var database = require('./config/database');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -19,6 +21,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Mongo conection:A partir de aqui comienza a llamar la conexión
+database.mongoConnect();
+
+//Router: A partir de aqui comienza el router
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
