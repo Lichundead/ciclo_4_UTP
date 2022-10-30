@@ -8,12 +8,14 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+var database = require ('./config/database');
+var visitantesRouter = require('./routes/visitantes.router');
 
 var database = require('./config/database');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -27,6 +29,7 @@ database.mongoConnect();
 //Router: A partir de aqui comienza el router
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/visitantes', visitantesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
