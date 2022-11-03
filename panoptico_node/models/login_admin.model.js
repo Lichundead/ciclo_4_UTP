@@ -9,4 +9,4 @@ const  Login_adminSchema = new Schema ({
     contraseña: {type: String, required: false, max: 70},
 });
 
-module.exports = mongoose.model("Login_adminShema", Login_adminSchema);
+module.exports = mongoose.model("Login_admin", Login_adminSchema);
