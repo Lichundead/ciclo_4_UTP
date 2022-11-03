@@ -10,7 +10,7 @@ exports.create = function (req, res) {
         contraseña: req.body.contraseña,
     });
 
-    visitante.save(function (err) {
+    admin.save(function (err) {
         if (err) {
             console.error(err),
             (response.exito = false),
