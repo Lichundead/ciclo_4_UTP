@@ -1,11 +1,10 @@
 const mongoose = require("mongoose");
 
 const uri =
-  "mongodb+srv://panoptico:panoptico1@panopticomongo.e5rc48m.mongodb.net/?retryWrites=true&w=majority";
-const db = "panoptico-db";
+  "mongodb+srv://panoptico:panoptico1@panopticomongo.e5rc48m.mongodb.net/panoptico-db?retryWrites=true&w=majority";
 
 exports.mongoConnect = () => {
-  const mongoStringConnection = `${uri}/${db}`;
+  const mongoStringConnection = `${uri}`;
   mongoose.connect(mongoStringConnection);
   mongoose.Promise = global.Promise;
   const dbConnection = mongoose.connection;

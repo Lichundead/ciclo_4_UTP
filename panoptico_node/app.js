@@ -11,7 +11,7 @@ var app = express();
 var database = require("./config/database");
 var visitantesRouter = require("./routes/visitantes.router");
 var ingresosRouter = require("./routes/ingresos.router");
-var login_adminRouter = require('./routes/login_admin.router');
+var login_adminRouter = require("./routes/login_admin.router");
 
 var database = require("./config/database");
 
@@ -30,9 +30,9 @@ database.mongoConnect();
 //Router: A partir de aqui comienza el router
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-app.use("/visitantes", visitantesRouter);
+app.use("/visitas_guiadas", visitantesRouter);
 app.use("/ingresos", ingresosRouter);
-app.use('./login_admin', login_adminRouter);
+app.use("/login_admin", login_adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
