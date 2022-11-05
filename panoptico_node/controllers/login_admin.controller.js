@@ -32,7 +32,7 @@ exports.find = function (req, res) {
 };
 
 exports.findOne = function (req, res) {
-    Admin.findOne({email: req.params.email}, function (err, admin) {
+    Admin.findOne({ id: req.params.id }, function (err, admin) {
         res.json(admin);
     });
 };
@@ -44,7 +44,7 @@ exports.update = function (req, res) {
     };
 
     Admin.findOneAndUpdate(
-            {email: req.params.email },
+            {id: req.params.id },
             { $set: admin },
         function (err) {
             if (err) {
@@ -62,7 +62,7 @@ exports.update = function (req, res) {
 }
 
 exports.remove = function (req, res) {
-    Admin.findOneAndRemove({ email: req.params.email }, function (err) {
+    Admin.findOneAndRemove({ id: req.params.id }, function (err) {
         if (err) {
             console.error(err),
                 (response.exito = false),
@@ -70,8 +70,8 @@ exports.remove = function (req, res) {
             res.json(response);
             return;
         }
-        (response.exito = true),
-        (response.msg = "El admin se eliminó correctamente");
-        res.json(response);
+                (response.exito = true),
+                (response.msg = "El admin se eliminó correctamente");
+            res.json(response);
     });
 };
