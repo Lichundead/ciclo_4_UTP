@@ -24,3 +24,54 @@ exports.create = function (req, res) {
         res.json(response);
     });
 };
+
+exports.find = function (req, res) {
+    Admin.find(function (err, admins) {
+        res.json(admins);
+    });
+};
+
+exports.findOne = function (req, res) {
+    Admin.findOne({email: req.params.email}, function (err, admin) {
+        res.json(admin);
+    });
+};
+
+exports.update = function (req, res) {
+    let admin = {
+        email: req.body.email,
+        contraseña: req.body.contraseña,
+    };
+
+    Admin.findOneAndUpdate(
+            {email: req.params.email },
+            { $set: admin },
+        function (err) {
+            if (err) {
+                console.error(err),
+                    (response.exito = false),
+                    (response.msg = "Error al modificar al admin");
+                res.json(response);
+                return;
+            }
+            (response.exito = true),
+                (response.msg = "El admin se modificó correctamente");
+            res.json(response);
+        }
+    );
+}
+
+exports.remove = function (req, res) {
+    Admin.findOneAndRemove({ email: req.params.email }, function (err) {
+        if (err) {
+            console.error(err),
+                (response.exito = false),
+                (response.msg = "Error al eliminar al admin");
+            res.json(response);
+            return;
+        }
+        (response.exito = true),
+        (response.msg = "El admin se eliminó correctamente");
+        res.json(response);
+    });
+};
