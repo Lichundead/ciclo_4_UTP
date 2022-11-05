@@ -8,5 +8,4 @@ router.get("/:id", login_adminController.findOne);
 router.put("/:id", login_adminController.update);
 router.delete("/:id", login_adminController.remove);
 
-
 module.exports = router;
