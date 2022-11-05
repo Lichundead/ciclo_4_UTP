@@ -12,6 +12,7 @@ var database = require("./config/database");
 var visitantesRouter = require("./routes/visitantes.router");
 var ingresosRouter = require("./routes/ingresos.router");
 var login_adminRouter = require("./routes/login_admin.router");
+var estudiantesRouter = require("./routes/estudiantes.router");
 
 var database = require("./config/database");
 
@@ -33,6 +34,7 @@ app.use("/users", usersRouter);
 app.use("/visitas_guiadas", visitantesRouter);
 app.use("/ingresos", ingresosRouter);
 app.use("/login_admin", login_adminRouter);
+app.use("/estudiantes_inscritos", estudiantesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
