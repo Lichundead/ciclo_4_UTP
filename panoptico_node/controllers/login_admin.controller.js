@@ -44,7 +44,7 @@ exports.update = function (req, res) {
     };
 
     Admin.findOneAndUpdate(
-            {id: req.params.id },
+            {_id: req.params.id },
             { $set: admin },
         function (err) {
             if (err) {
