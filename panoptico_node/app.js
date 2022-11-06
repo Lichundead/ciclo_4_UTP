@@ -3,18 +3,14 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
-
-var app = express();
 var database = require("./config/database");
+
 var visitantesRouter = require("./routes/visitantes.router");
 var ingresosRouter = require("./routes/ingresos.router");
 var login_adminRouter = require("./routes/login_admin.router");
 var estudiantesRouter = require("./routes/estudiantes.router");
 
-var database = require("./config/database");
+var app = express();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -29,8 +25,6 @@ app.use(express.static(path.join(__dirname, "public")));
 database.mongoConnect();
 
 //Router: A partir de aqui comienza el router
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
 app.use("/visitas_guiadas", visitantesRouter);
 app.use("/ingresos", ingresosRouter);
 app.use("/login_admin", login_adminRouter);
