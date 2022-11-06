@@ -62,7 +62,7 @@ exports.update = function (req, res) {
 }
 
 exports.remove = function (req, res) {
-    Admin.findOneAndRemove({ id: req.params.id }, function (err) {
+    Admin.findOneAndRemove({ _id: req.params.id }, function (err) {
         if (err) {
             console.error(err),
                 (response.exito = false),
