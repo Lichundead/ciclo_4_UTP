@@ -32,7 +32,7 @@ exports.find = function (req, res) {
 };
 
 exports.findOne = function (req, res) {
-    Admin.findOne({ id: req.params.id }, function (err, admin) {
+    Admin.findOne({ _id: req.params.id }, function (err, admin) {
         res.json(admin);
     });
 };
