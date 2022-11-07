@@ -24,6 +24,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 //Mongo conection:A partir de aqui comienza a llamar la conexión
 database.mongoConnect();
+//app.use('/login_admins', login_adminRouter);
 app.use(auth);
 
 //Router: A partir de aqui comienza el router
