@@ -9,6 +9,7 @@ var auth = require("./auth/main_auth");
 var visitantesRouter = require("./routes/visitantes.router");
 var ingresosRouter = require("./routes/ingresos.router");
 var estudiantesRouter = require("./routes/estudiantes.router");
+var login_adminRouter = require("./routes/login_admin.router");
 
 var app = express();
 
