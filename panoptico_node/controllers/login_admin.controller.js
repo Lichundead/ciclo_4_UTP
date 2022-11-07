@@ -1,4 +1,4 @@
-const Login_admin = require("../models/usuarios.model");
+const Login_admin = require("../models/login_admin.model");
 const crypto = require("crypto")
 const jwt = require("jsonwebtoken")
 
