@@ -1,0 +1,19 @@
+#navbar #dropdown-header .row:nth-child(1) {
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+#navbar #dropdown-header .row:nth-child(2) {
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+#navbar #titulo {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS";
+  font-weight: bold;
+  font-size: 26px;
+  margin-right: 10%;
+}
