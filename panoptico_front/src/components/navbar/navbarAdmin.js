@@ -7,6 +7,7 @@ import {
   Row,
   Container,
 } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserTie } from "@fortawesome/free-solid-svg-icons";
 import "./navbarAdmin.css";
@@ -34,9 +35,30 @@ export default class menuTablas extends React.Component {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/admin/estudiantes">Estudiantes</Nav.Link>
-              <Nav.Link href="/admin/visitantes">Visitantes</Nav.Link>
-              <Nav.Link href="/admin/ingresos/">Ingresos</Nav.Link>
+              <NavLink
+                className="nav-link"
+                exact
+                to="/admin/estudiantes/"
+                activeClassName="active"
+              >
+                Estudiantes
+              </NavLink>
+              <NavLink
+                className="nav-link"
+                exact
+                to="/admin/visitantes/"
+                activeClassName="active"
+              >
+                Visitante
+              </NavLink>
+              <NavLink
+                className="nav-link"
+                exact
+                to="/admin/ingresos/"
+                activeClassName="active"
+              >
+                Ingresos
+              </NavLink>
             </Nav>
             <DropdownButton
               id="dropdown-basic-button"
