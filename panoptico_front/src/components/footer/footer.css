@@ -1,0 +1,10 @@
+#contenedor {
+  display: flex;
+  justify-content: center;
+}
+
+#imagenPie {
+  background: #68aef077;
+  border: solid rgba(26, 17, 17, 0.253);
+  border-width: 1px 0 0 0;
+}

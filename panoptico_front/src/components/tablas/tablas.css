@@ -1,0 +1,10 @@
+.tablas-admin {
+  background: rgb(206, 245, 239);
+  min-width: max-content;
+}
+
+#container {
+  padding-top: 100px;
+  padding-bottom: 50px;
+  min-height: 574px;
+}

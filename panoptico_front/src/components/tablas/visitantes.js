@@ -1,6 +1,8 @@
 import React from "react";
 import { Container, Table } from "react-bootstrap";
 import MenuTablas from "../navbar/navbarAdmin";
+import Footer from "../footer/footer";
+import "./tablas.css";
 
 export default class visitantes extends React.Component {
   constructor(props) {
@@ -10,9 +12,9 @@ export default class visitantes extends React.Component {
 
   render() {
     return (
-      <div className="visitantes">
+      <div className="tablas-admin">
         <MenuTablas />
-        <Container style={{ marginTop: 100, marginBottom: 100 }}>
+        <Container id="container">
           <h1 style={{ marginBottom: 30 }}>Tabla Visitantes</h1>
           <Table striped bordered hover variant="primary">
             <thead>
@@ -49,6 +51,7 @@ export default class visitantes extends React.Component {
             </tbody>
           </Table>
         </Container>
+        <Footer />
       </div>
     );
   }
