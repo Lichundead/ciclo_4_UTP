@@ -4,12 +4,12 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var database = require("./config/database");
-//var auth = require("./auth/main_auth");
+var auth = require("./auth/main_auth");
 
 var visitantesRouter = require("./routes/visitantes.router");
 var ingresosRouter = require("./routes/ingresos.router");
 var estudiantesRouter = require("./routes/estudiantes.router");
-//var login_adminRouter = require("./routes/login_admin.router");
+var adminsRouter = require("./routes/admins.router");
 
 var app = express();
 
@@ -24,8 +24,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 //Mongo conection:A partir de aqui comienza a llamar la conexión
 database.mongoConnect();
-//app.use("/login_admins", login_adminRouter);
-//app.use(auth);
+app.use("/admins", adminsRouter);
+app.use(auth);
 
 //Router: A partir de aqui comienza el router
 app.use("/visitas_guiadas", visitantesRouter);
