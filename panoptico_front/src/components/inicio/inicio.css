@@ -1,5 +1,8 @@
 body {
     background-color: rgb(24, 24, 24);
+    background-image: url(../inicio/img/2.png);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .containerPrincipal {
