@@ -35,28 +35,13 @@ export default class menuTablas extends React.Component {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <NavLink
-                className="nav-link"
-                exact
-                to="/admin/estudiantes/"
-                activeClassName="active"
-              >
+              <NavLink className="nav-link" to="/admin/estudiantes/">
                 Estudiantes
               </NavLink>
-              <NavLink
-                className="nav-link"
-                exact
-                to="/admin/visitantes/"
-                activeClassName="active"
-              >
+              <NavLink className="nav-link" to="/admin/visitantes/">
                 Visitante
               </NavLink>
-              <NavLink
-                className="nav-link"
-                exact
-                to="/admin/ingresos/"
-                activeClassName="active"
-              >
+              <NavLink className="nav-link" to="/admin/ingresos/">
                 Ingresos
               </NavLink>
             </Nav>
