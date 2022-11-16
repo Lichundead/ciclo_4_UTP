@@ -11,12 +11,11 @@ export default class inicio extends React.Component {
 
   render() {
     return (
-      <div className="fondo-inicio">
+      <body id="fondo-inicio">
         <NavInicio />
-        <Container id="container">
-          <Row></Row>
-          <Row className="tarjetas-inicio">
-            <Card id="visitantes" style={{ width: "25rem" }}>
+        <Container>
+          <Row id="tarjetas-inicio">
+            <Card id="visitantes" style={{ width: "22rem", height: "27rem" }}>
               <Card.Img
                 variant="top"
                 src="https://definicion.de/wp-content/uploads/2013/03/perro-1.jpg"
@@ -34,7 +33,7 @@ export default class inicio extends React.Component {
               </Card.Body>
             </Card>
 
-            <Card id="estudiantes" style={{ width: "25rem" }}>
+            <Card id="estudiantes" style={{ width: "22rem", height: "27rem" }}>
               <Card.Img
                 variant="top"
                 src="https://definicion.de/wp-content/uploads/2013/03/perro-1.jpg"
@@ -53,7 +52,7 @@ export default class inicio extends React.Component {
             </Card>
           </Row>
         </Container>
-      </div>
+      </body>
     );
   }
 }
