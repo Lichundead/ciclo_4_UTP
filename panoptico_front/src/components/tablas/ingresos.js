@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Table } from "react-bootstrap";
 import MenuTablas from "../navbar/navbarAdmin";
 import Footer from "../footer/footer";
+import BarraBusqueda from "../filtros/busqueda";
 import "./tablas.css";
 
 export default class ingresos extends React.Component {
@@ -13,8 +14,9 @@ export default class ingresos extends React.Component {
     return (
       <div className="tablas-admin">
         <MenuTablas />
-        <Container id="container">
-          <h1 style={{ marginBottom: 30 }}>Tabla ingresos</h1>
+        <Container id="container-tablas">
+          <h1>Tabla ingresos</h1>
+        <BarraBusqueda />
           <Table striped bordered hover variant="primary">
             <thead>
               <tr>
