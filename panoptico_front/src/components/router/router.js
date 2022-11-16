@@ -4,6 +4,7 @@ import Inicio from "../inicio/inicio";
 import Ingresos from "../tablas/ingresos";
 import Estudiantes from "../tablas/estudiantes";
 import Visitantes from "../tablas/visitantes";
+import VisitantesVista from "../visitantes/visitantes";
 
 export default function AppRoutes() {
   return (
@@ -12,6 +13,7 @@ export default function AppRoutes() {
         <Route exact path={["/admin/ingresos/"]} component={Ingresos} />
         <Route exact path={["/admin/estudiantes/"]} component={Estudiantes} />
         <Route exact path={["/admin/visitantes/"]} component={Visitantes} />
+        <Route exact path={["/ingreso/visitantes/"]} component={VisitantesVista} />
         <Route exact path={["/"]} component={Inicio} />
         <Route
           path={"*"}

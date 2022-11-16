@@ -1,0 +1,23 @@
+#visitantes-container{
+    margin-top: 10%;
+}
+
+#visitantes-container h2,
+#visitantes-container button,
+#visitantes-container form
+{
+    width: 100%;
+}
+
+#visitantes-container h2
+{
+    margin: 15px;
+}
+
+#visitantes-container button{
+    margin-top: 15px;
+}
+
+#visitantes-container .form-label{
+    float: left;
+}
