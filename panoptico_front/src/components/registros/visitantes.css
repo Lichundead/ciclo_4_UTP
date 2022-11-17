@@ -1,12 +1,29 @@
-#visitantes-container{
-    margin-top: 10%;
+#fondo-visitante {
+    height: 750px;
+   background-image: url(../inicio/img/1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+
+
+#bienvenida{
+    padding: 5%;
 }
 
 #visitantes-container h2,
 #visitantes-container button,
 #visitantes-container form
-{
+{    
     width: 100%;
+}
+
+#visitantes-container form, 
+#visitantes-container label, 
+#visitantes-container input 
+{
+    margin-top: 5%; 
+    font-size: x-large;  
 }
 
 #visitantes-container h2
@@ -18,6 +35,40 @@
     margin-top: 15px;
 }
 
-#visitantes-container .form-label{
-    float: left;
+#visitantes-container col{
+    margin-left: 15px;
+}
+
+
+#nuevo-visitante {
+    
+    padding: 5%;
+    min-width: 35%;
+    opacity: 88%;
+    background-color: rgb(67, 89, 218);
+    border-radius: 6%;
+  }
+
+  #existente-visitante {    
+    padding: 5%;
+    min-width: 35%;
+    opacity: 88%;
+    background-color: rgb(232, 233, 239);
+    border-radius: 6%;
+  }
+
+#visitantes-container button {
+    color: rgb(12, 12, 12);
+    font-weight: bolder;
+    font-size: x-large;
+    background-color: rgba(0, 255, 136, 0.655);
+    min-width: 100%;
+}
+
+#btn-crearcuenta {
+    color: rgb(11, 10, 10);
+    font-weight: bolder;
+    font-size: x-large;
+    background-color: rgb(0, 255, 51);
+    min-width: 100%;
 }

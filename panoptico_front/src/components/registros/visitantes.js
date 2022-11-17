@@ -1,6 +1,6 @@
 import React from "react";
-import { Container, Form, Button, Row, Col } from "react-bootstrap";
-import './visitantes.css'
+import { Container, Form, Button, Row, Col, Card } from "react-bootstrap";
+import "./visitantes.css";
 
 export default class VisitantesVista extends React.Component {
   constructor(props) {
@@ -10,19 +10,22 @@ export default class VisitantesVista extends React.Component {
 
   render() {
     return (
-      <Container id="visitantes-container">
+        <body id="fondo-visitante">
+            <Container id="visitantes-container">
         <Row>
-          <Col>
+          <Col id="bienvenida">
             <h2 >
               ¡BIENVENIDO VISITANTE AL MUSEO PANÓPTICO!
             </h2>
           </Col>
         </Row>
         <Row>             
-          <Col xs="8"
-          md={{ span: 3, offset: 2 }}
-          lg={{ span: 3, offset: 2 }}
-          xl={{ span: 3, offset: 2 }}>
+          <Col sm="10" xs="10"
+           md={{ span: 4, offset: 2 }}
+           lg={{ span: 4, offset: 2 }}
+           xl={{ span: 4, offset: 2 }}>
+
+            <Card id="existente-visitante">
              <span>
             <h3>
               ¿Ya tengo una cuenta?
@@ -41,17 +44,19 @@ export default class VisitantesVista extends React.Component {
                 </Form.Text>               
               </Form.Group>             
 
-            <Button variant="primary" type="submit">
+            <Button id="btn-registrarse" variant="" type="submit">
               Registrarse
               </Button>             
             </Form>
-            
+            </Card>
           </Col>
 
-          <Col xs="8"
-          md={{ span: 3, offset: 2 }}
-          lg={{ span: 3, offset: 2 }}
-          xl={{ span: 3, offset: 2 }}>
+          <Col sm="10" xs="10"
+          md={{ span: 4, offset: 2 }}
+          lg={{ span: 4, offset: 2 }}
+          xl={{ span: 4, offset: 2 }}>
+            
+            <Card id="nuevo-visitante">
             <span>
             <h3>
               ¿Eres nuevo visitante?
@@ -60,7 +65,6 @@ export default class VisitantesVista extends React.Component {
               Crea una cuenta!
             </h4>
             </span>
-            
             <Form>   
             <Form.Group>               
                 <Form.Control type="" placeholder="Nombre completo" />
@@ -68,27 +72,29 @@ export default class VisitantesVista extends React.Component {
                 </Form.Text>               
               </Form.Group>
 
-              <Form.Group>              
+              <Form.Group >              
                 <Form.Control type="" placeholder="Cédula" />
                 <Form.Text id="cedula" className="">                  
                 </Form.Text>               
               </Form.Group>
                 
-              <Form.Group>               
+              <Form.Group >               
                 <Form.Control type="" placeholder="Celular" />
                 <Form.Text id="telefono" className="">                  
                 </Form.Text>               
               </Form.Group>  
 
-            <Button variant="primary" type="submit">
+            <Button id="btn-crearcuenta" variant="" type="submit">
               Crear cuenta
               </Button>             
             </Form>
-            
+            </Card>
           </Col>         
         </Row>
         
       </Container>
+        </body>
+      
     );
   }
 }
