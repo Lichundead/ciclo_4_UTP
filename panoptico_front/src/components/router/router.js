@@ -4,7 +4,7 @@ import Inicio from "../inicio/inicio";
 import Ingresos from "../tablas/ingresos";
 import Estudiantes from "../tablas/estudiantes";
 import Visitantes from "../tablas/visitantes";
-import VisitantesVista from "../visitantes/visitantes";
+import VisitantesVista from "../registros/visitantes";
 
 export default function AppRoutes() {
   return (
