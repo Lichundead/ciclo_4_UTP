@@ -1,61 +1,58 @@
 #fondo-visitante {
-    height: 750px;
-   background-image: url(../inicio/img/1.png);
+    height: 950px;
+    background-image: url(../img/3.png);
     background-size: cover;
     background-repeat: no-repeat;
-    
+
 }
 
 
-#bienvenida{
+#bienvenida {
     padding: 5%;
 }
 
 #visitantes-container h2,
 #visitantes-container button,
-#visitantes-container form
-{    
+#visitantes-container form {
     width: 100%;
 }
 
-#visitantes-container form, 
-#visitantes-container label, 
-#visitantes-container input 
-{
-    margin-top: 5%; 
-    font-size: x-large;  
+#visitantes-container form,
+#visitantes-container label,
+#visitantes-container input {
+    margin-top: 5%;
+    font-size: x-large;
 }
 
-#visitantes-container h2
-{
+#visitantes-container h2 {
     margin: 15px;
 }
 
-#visitantes-container button{
+#visitantes-container button {
     margin-top: 15px;
 }
 
-#visitantes-container col{
+#visitantes-container col {
     margin-left: 15px;
 }
 
 
 #nuevo-visitante {
-    
+
     padding: 5%;
     min-width: 35%;
     opacity: 88%;
     background-color: rgb(67, 89, 218);
     border-radius: 6%;
-  }
+}
 
-  #existente-visitante {    
+#existente-visitante {
     padding: 5%;
     min-width: 35%;
     opacity: 88%;
     background-color: rgb(232, 233, 239);
     border-radius: 6%;
-  }
+}
 
 #visitantes-container button {
     color: rgb(12, 12, 12);

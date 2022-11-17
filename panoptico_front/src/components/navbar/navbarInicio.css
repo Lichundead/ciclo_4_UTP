@@ -1,14 +1,16 @@
-#navbar #dropdown-header .row:nth-child(1) {
+#dropdown-inicio {
+    width: 400px;
+}
+
+#dropdown-inicio .row:nth-child(1) {
     font-size: 40px;
     display: flex;
     justify-content: center;
 }
 
-#navbar #dropdown-header .row:nth-child(2) {
-    font-size: 18px;
-    display: flex;
-    justify-content: center;
-    margin-top: 5px;
+#inicio-form {
+    font-size: large;
+    font-weight: bold;
 }
 
 #pano-title {

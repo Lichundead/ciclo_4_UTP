@@ -1,3 +1,5 @@
+import { faUserTie } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import {
   Container,
@@ -6,6 +8,8 @@ import {
   Nav,
   Row,
   Dropdown,
+  Form,
+  Button,
 } from "react-bootstrap";
 import "./navbarInicio.css";
 
@@ -28,7 +32,6 @@ export default class navInicio extends React.Component {
             />
             Museo Panóptico
           </Navbar.Brand>
-
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
@@ -40,15 +43,40 @@ export default class navInicio extends React.Component {
               variant="dark"
               menuVariant="dark"
               title="Admin"
+              align="end"
             >
-              <Dropdown.Header>
-                <Row></Row>
-                <Row>#ADMIN#</Row>
+              <Dropdown.Header id="dropdown-inicio">
+                <Row>
+                  <FontAwesomeIcon icon={faUserTie} />
+                </Row>
+                <Form id="inicio-form">
+                  <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Usuario:</Form.Label>
+                    <Form.Control
+                      onChange={(e) =>
+                        this.setState({ usuario: e.target.value })
+                      }
+                    />
+                  </Form.Group>
+
+                  <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>Contraseña:</Form.Label>
+                    <Form.Control
+                      type="password"
+                      onChange={(e) => this.setState({ pass: e.target.value })}
+                    />
+                  </Form.Group>
+                  <Dropdown.Divider />
+                  <Button
+                    variant="primary"
+                    onClick={() => {
+                      this.iniciarSesion();
+                    }}
+                  >
+                    Iniciar Sesión
+                  </Button>
+                </Form>
               </Dropdown.Header>
-              <Dropdown.Divider />
-              <Dropdown.Item href="#/action-1">Cerrar Sesión</Dropdown.Item>
-              {/* <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item> */}
             </DropdownButton>
           </Navbar.Collapse>
         </Container>

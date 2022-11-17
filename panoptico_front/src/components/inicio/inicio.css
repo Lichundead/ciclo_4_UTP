@@ -1,6 +1,6 @@
 #fondo-inicio {
     height: 1000px;
-    background-image: url(../inicio/img/2.png);
+    background-image: url(../img/2.png);
     background-size: cover;
     background-repeat: no-repeat;
 
@@ -8,20 +8,29 @@
 
 #tarjetas-inicio {
     justify-content: center;
+    opacity: 95%;
 }
 
 
 #visitantes {
-    margin-top: 120px;
-    margin-right: 2%;
+    margin-top: 170px;
+    margin-right: 5%;
+}
+
+#visitantes .row {
+    margin-top: 10px;
+    font-size: 240px;
 }
 
 #estudiantes {
-    margin-top: 120px;
-    margin-left: 2%;
+    margin-top: 170px;
+    margin-left: 5%;
 }
 
-
+#estudiantes .row {
+    margin-top: 10px;
+    font-size: 240px;
+}
 
 #boton-visitantes {
     color: white;

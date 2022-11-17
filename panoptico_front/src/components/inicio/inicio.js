@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserGraduate, faUserGroup } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import { Container, Card, Button, Row } from "react-bootstrap";
 import NavInicio from "../navbar/navbarInicio";
@@ -16,13 +18,12 @@ export default class inicio extends React.Component {
         <Container>
           <Row id="tarjetas-inicio">
             <Card id="visitantes" style={{ width: "22rem", height: "27rem" }}>
-              <Card.Img
-                variant="top"
-                src="https://definicion.de/wp-content/uploads/2013/03/perro-1.jpg"
-              />
+              <Row>
+                <FontAwesomeIcon icon={faUserGroup} />
+              </Row>
               <Card.Body>
                 <Card.Title>
-                  <h2>Visitantes</h2>
+                  <h2 style={{ fontWeight: "bolder" }}>VISITANTES</h2>
                 </Card.Title>
                 <Card.Text>Por favor selecciona el botón ingresar</Card.Text>
                 <Card.Footer>
@@ -34,13 +35,12 @@ export default class inicio extends React.Component {
             </Card>
 
             <Card id="estudiantes" style={{ width: "22rem", height: "27rem" }}>
-              <Card.Img
-                variant="top"
-                src="https://definicion.de/wp-content/uploads/2013/03/perro-1.jpg"
-              />
+              <Row>
+                <FontAwesomeIcon icon={faUserGraduate} />
+              </Row>
               <Card.Body>
                 <Card.Title>
-                  <h2>Estudiantes</h2>
+                  <h2 style={{ fontWeight: "bolder" }}>ESTUDIANTES</h2>
                 </Card.Title>
                 <Card.Text>Por favor selecciona el botón ingresar</Card.Text>
                 <Card.Footer>
