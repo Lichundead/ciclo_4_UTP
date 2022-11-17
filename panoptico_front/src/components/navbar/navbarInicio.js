@@ -8,9 +8,8 @@ import {
   Nav,
   Row,
   Dropdown,
-  Form,
-  Button,
 } from "react-bootstrap";
+import Login from "../login/login";
 import "./navbarInicio.css";
 
 export default class navInicio extends React.Component {
@@ -49,33 +48,7 @@ export default class navInicio extends React.Component {
                 <Row>
                   <FontAwesomeIcon icon={faUserTie} />
                 </Row>
-                <Form id="inicio-form">
-                  <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Usuario:</Form.Label>
-                    <Form.Control
-                      onChange={(e) =>
-                        this.setState({ usuario: e.target.value })
-                      }
-                    />
-                  </Form.Group>
-
-                  <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Contraseña:</Form.Label>
-                    <Form.Control
-                      type="password"
-                      onChange={(e) => this.setState({ pass: e.target.value })}
-                    />
-                  </Form.Group>
-                  <Dropdown.Divider />
-                  <Button
-                    variant="primary"
-                    onClick={() => {
-                      this.iniciarSesion();
-                    }}
-                  >
-                    Iniciar Sesión
-                  </Button>
-                </Form>
+                <Login />
               </Dropdown.Header>
             </DropdownButton>
           </Navbar.Collapse>

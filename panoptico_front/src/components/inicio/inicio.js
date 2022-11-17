@@ -13,7 +13,7 @@ export default class inicio extends React.Component {
 
   render() {
     return (
-      <body id="fondo-inicio">
+      <div id="fondo-inicio">
         <NavInicio />
         <Container>
           <Row id="tarjetas-inicio">
@@ -52,7 +52,7 @@ export default class inicio extends React.Component {
             </Card>
           </Row>
         </Container>
-      </body>
+      </div>
     );
   }
 }
