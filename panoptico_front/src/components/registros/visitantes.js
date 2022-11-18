@@ -11,7 +11,7 @@ export default class VisitantesVista extends React.Component {
 
   render() {
     return (
-      <body>
+      <div id="div-body">
         <NavInicio />
         <Container id="contenedor">
           <Row>
@@ -74,7 +74,7 @@ export default class VisitantesVista extends React.Component {
             </div>
           </Row>
         </Container>
-      </body>
+      </div>
     );
   }
 }

@@ -1,11 +1,15 @@
-*{
+#root{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
 
 }
-body{
+
+#div-body{
+    height: 800px;
+   /* background-image: url(https://i.postimg.cc/KvYDS1sX/1.png);*/    
+
     background-image: url(../img/1.png);
     background-size: cover;
     background-repeat: no-repeat;
@@ -17,7 +21,7 @@ body{
     width: 100%;
     padding: 20px;
     margin: auto;
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 #contenedor h2{
