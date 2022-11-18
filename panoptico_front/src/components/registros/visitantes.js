@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Form, Button, Row, Col, Card } from "react-bootstrap";
+import { Container, Form, Button, Row, Col } from "react-bootstrap";
 import "./visitantes.css";
 import NavInicio from "../navbar/navbarInicio";
 
@@ -12,49 +12,40 @@ export default class VisitantesVista extends React.Component {
   render() {
     return (
       <body>
-      <NavInicio />
-        <Container id="visitantes-container">
+        <NavInicio />
+        <Container id="contenedor">
           <Row>
-            <Col id="bienvenida">
-              <h2>¡BIENVENIDO VISITANTE AL MUSEO PANÓPTICO!</h2>
+            <Col>
+              <h2>¡BIENVENIDO VISITANTE<br />AL MUSEO PANÓPTICO!</h2>
             </Col>
           </Row>
-          
+
           <Row>
-            <Col
-             
-            >
-             
+            <div id="contenedor_total">
+              <div id="caja_trasera">
+                <div id="caja_trasera-login">
+                  <Form>
+                    <h3>¿Ya tengo una cuenta?</h3>
+                    <p>¡Guardar asistencia!</p>
+                    <Form.Group>
+                      <Form.Label>Ingresa tu identificación</Form.Label>
+                      <Form.Control type="" placeholder="Cédula" />
+                      <Form.Text id="cedula" className=""></Form.Text>
+                    </Form.Group>
 
-              <Card id="existente-visitante">
-                <span>
-                  <h3>¿Ya tengo una cuenta?</h3>
-                  <h4>¡Guardar asistencia!</h4>
-                </span>
+                    <Button id="btn-registrarse" variant="" type="submit">
+                      Guardar
+                    </Button>
+                  </Form>
+                </div>
+                
+                <div id="contenedor_form-registro">
 
-                <Form>
-                  <Form.Group>
-                    <Form.Label>Ingresa tu identificación</Form.Label>
-                    <Form.Control type="" placeholder="Cédula" />
-                    <Form.Text id="cedula" className=""></Form.Text>
-                  </Form.Group>
-
-                  <Button id="btn-registrarse" variant="" type="submit">
-                    Guardar
-                  </Button>
-                </Form>
-              </Card>
-            </Col>
-
-            <Col
-              
-            >
-              <Card id="nuevo-visitante">
-                <span>
-                  <h3>¿Eres nuevo visitante?</h3>
-                  <h4>Crea una cuenta!</h4>
-                </span>
-                <Form>
+                <Form id="form1">
+                  <span>
+                    <h3>¿Eres nuevo visitante?</h3>
+                    <h4>Crea una cuenta!</h4>
+                  </span>
                   <Form.Group>
                     <Form.Control type="" placeholder="Nombre completo" />
                     <Form.Text id="nombre" className=""></Form.Text>
@@ -74,11 +65,15 @@ export default class VisitantesVista extends React.Component {
                     Crear cuenta
                   </Button>
                 </Form>
-              </Card>
-            </Col>
+                </div>
+              </div>
+
+              <div id="contenedor_form-registro">   
+              
+              </div>
+            </div>
           </Row>
         </Container>
-      
       </body>
     );
   }
