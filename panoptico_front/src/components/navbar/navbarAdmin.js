@@ -22,7 +22,7 @@ export default class menuTablas extends React.Component {
     return (
       <Navbar expand="lg" fixed="top" id="navbar" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand id="titulo-logo" href="#home">
+          <Navbar.Brand id="titulo-logo">
             <img
               alt=""
               src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/052/519/original/icono.png?1668024209"

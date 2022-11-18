@@ -1,7 +1,9 @@
 import React from "react";
-import { Container, Row } from "react-bootstrap";
+import { Button, Container, Row } from "react-bootstrap";
 import MenuTablas from "../navbar/navbarAdmin";
 import Footer from "../footer/footer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInfo, faTrash } from "@fortawesome/free-solid-svg-icons";
 import "./tablas.css";
 import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory, {
@@ -12,93 +14,226 @@ import paginationFactory, {
 import ToolkitProvider, {
   Search,
 } from "react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit";
+import { Link } from "react-router-dom";
 
 const { SearchBar } = Search;
 
 const products = [
   {
     id: 1,
-    fecha: "10/09/2022 - 6:50pm",
+    fecha: "11/09/2022 - 6:50pm",
     cedula: 1031458752,
     rol: "Estudiante",
-    acciones: "Eliminar",
+    acciones: (
+      <div>
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faInfo} /> Detalles
+          </Button>
+        </Link>
+        <Button bg="dark" variant="dark">
+          <FontAwesomeIcon icon={faTrash} /> Eliminar
+        </Button>
+      </div>
+    ),
   },
   {
     id: 2,
     fecha: "10/09/2022 - 6:50pm",
-    cedula: 1031458752,
+    cedula: 1031644347,
     rol: "Estudiante",
-    acciones: "Eliminar",
+    acciones: (
+      <div>
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faInfo} /> Detalles
+          </Button>
+        </Link>
+        <Button bg="dark" variant="dark">
+          <FontAwesomeIcon icon={faTrash} /> Eliminar
+        </Button>
+      </div>
+    ),
   },
   {
     id: 3,
     fecha: "10/09/2022 - 6:50pm",
     cedula: 1031458752,
     rol: "Estudiante",
-    acciones: "Eliminar",
+    acciones: (
+      <div>
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faInfo} /> Detalles
+          </Button>
+        </Link>
+        <Button bg="dark" variant="dark">
+          <FontAwesomeIcon icon={faTrash} /> Eliminar
+        </Button>
+      </div>
+    ),
   },
   {
     id: 4,
     fecha: "10/09/2022 - 6:50pm",
     cedula: 1031458752,
-    rol: "Estudiante",
-    acciones: "Eliminar",
+    rol: "Visitante",
+    acciones: (
+      <div>
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faInfo} /> Detalles
+          </Button>
+        </Link>
+        <Button bg="dark" variant="dark">
+          <FontAwesomeIcon icon={faTrash} /> Eliminar
+        </Button>
+      </div>
+    ),
   },
   {
     id: 5,
-    fecha: "10/09/2022 - 6:50pm",
+    fecha: "12/09/2022 - 6:50pm",
     cedula: 1031458752,
-    rol: "Estudiante",
-    acciones: "Eliminar",
+    rol: "Visitante",
+    acciones: (
+      <div>
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faInfo} /> Detalles
+          </Button>
+        </Link>
+        <Button bg="dark" variant="dark">
+          <FontAwesomeIcon icon={faTrash} /> Eliminar
+        </Button>
+      </div>
+    ),
   },
   {
     id: 6,
-    fecha: "10/09/2022 - 6:50pm",
+    fecha: "11/09/2022 - 6:51pm",
     cedula: 1031458752,
     rol: "Estudiante",
-    acciones: "Eliminar",
+    acciones: (
+      <div>
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faInfo} /> Detalles
+          </Button>
+        </Link>
+        <Button bg="dark" variant="dark">
+          <FontAwesomeIcon icon={faTrash} /> Eliminar
+        </Button>
+      </div>
+    ),
   },
   {
     id: 7,
     fecha: "10/09/2022 - 6:50pm",
     cedula: 1031458752,
     rol: "Estudiante",
-    acciones: "Eliminar",
+    acciones: (
+      <div>
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faInfo} /> Detalles
+          </Button>
+        </Link>
+        <Button bg="dark" variant="dark">
+          <FontAwesomeIcon icon={faTrash} /> Eliminar
+        </Button>
+      </div>
+    ),
   },
   {
     id: 8,
     fecha: "10/09/2022 - 6:50pm",
     cedula: 1031458752,
     rol: "Estudiante",
-    acciones: "Eliminar",
+    acciones: (
+      <div>
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faInfo} /> Detalles
+          </Button>
+        </Link>
+        <Button bg="dark" variant="dark">
+          <FontAwesomeIcon icon={faTrash} /> Eliminar
+        </Button>
+      </div>
+    ),
   },
   {
     id: 9,
     fecha: "10/09/2022 - 6:50pm",
     cedula: 1031458752,
     rol: "Estudiante",
-    acciones: "Eliminar",
+    acciones: (
+      <div>
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faInfo} /> Detalles
+          </Button>
+        </Link>
+        <Button bg="dark" variant="dark">
+          <FontAwesomeIcon icon={faTrash} /> Eliminar
+        </Button>
+      </div>
+    ),
   },
   {
     id: 10,
     fecha: "10/09/2022 - 6:50pm",
     cedula: 1031458752,
     rol: "Estudiante",
-    acciones: "Eliminar",
+    acciones: (
+      <div>
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faInfo} /> Detalles
+          </Button>
+        </Link>
+        <Button bg="dark" variant="dark">
+          <FontAwesomeIcon icon={faTrash} /> Eliminar
+        </Button>
+      </div>
+    ),
   },
   {
     id: 11,
     fecha: "10/09/2022 - 6:50pm",
     cedula: 1031458752,
     rol: "Estudiante",
-    acciones: "Eliminar",
+    acciones: (
+      <div>
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faInfo} /> Detalles
+          </Button>
+        </Link>
+        <Button bg="dark" variant="dark">
+          <FontAwesomeIcon icon={faTrash} /> Eliminar
+        </Button>
+      </div>
+    ),
   },
   {
     id: 12,
     fecha: "10/09/2022 - 6:50pm",
     cedula: 1031458752,
     rol: "Estudiante",
-    acciones: "Eliminar",
+    acciones: (
+      <div>
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faInfo} /> Detalles
+          </Button>
+        </Link>
+        <Button bg="dark" variant="dark">
+          <FontAwesomeIcon icon={faTrash} /> Eliminar
+        </Button>
+      </div>
+    ),
   },
 ];
 const columns = [

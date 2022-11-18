@@ -1,7 +1,9 @@
 import React from "react";
-import { Container, Row } from "react-bootstrap";
+import { Button, Container, Row } from "react-bootstrap";
 import MenuTablas from "../navbar/navbarAdmin";
 import Footer from "../footer/footer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInfo, faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import "./tablas.css";
 import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory, {
@@ -12,6 +14,7 @@ import paginationFactory, {
 import ToolkitProvider, {
   Search,
 } from "react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit";
+import { Link } from "react-router-dom";
 
 const { SearchBar } = Search;
 
@@ -22,7 +25,25 @@ const products = [
     nombre: "Visitante 1",
     telefono: "3158024578",
     email: "Visitante1@gmail.com",
-    acciones: "Acutualizar & Eliminar",
+    acciones: (
+      <div>
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faInfo} /> Detalles
+          </Button>
+        </Link>
+
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faEdit} /> Editar
+          </Button>
+        </Link>
+
+        <Button bg="dark" variant="dark">
+          <FontAwesomeIcon icon={faTrash} /> Eliminar
+        </Button>
+      </div>
+    ),
   },
   {
     id: 2,
@@ -30,7 +51,25 @@ const products = [
     nombre: "Visitante 2",
     telefono: "3158024578",
     email: "Visitante2@gmail.com",
-    acciones: "Acutualizar & Eliminar",
+    acciones: (
+      <div>
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faInfo} /> Detalles
+          </Button>
+        </Link>
+
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faEdit} /> Editar
+          </Button>
+        </Link>
+
+        <Button bg="dark" variant="dark">
+          <FontAwesomeIcon icon={faTrash} /> Eliminar
+        </Button>
+      </div>
+    ),
   },
   {
     id: 3,
@@ -38,7 +77,25 @@ const products = [
     nombre: "Visitante 3",
     telefono: "3158024578",
     email: "Visitante3@gmail.com",
-    acciones: "Acutualizar & Eliminar",
+    acciones: (
+      <div>
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faInfo} /> Detalles
+          </Button>
+        </Link>
+
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faEdit} /> Editar
+          </Button>
+        </Link>
+
+        <Button bg="dark" variant="dark">
+          <FontAwesomeIcon icon={faTrash} /> Eliminar
+        </Button>
+      </div>
+    ),
   },
   {
     id: 4,
@@ -46,7 +103,25 @@ const products = [
     nombre: "Visitante 4",
     telefono: "3158024578",
     email: "Visitante4@gmail.com",
-    acciones: "Acutualizar & Eliminar",
+    acciones: (
+      <div>
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faInfo} /> Detalles
+          </Button>
+        </Link>
+
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faEdit} /> Editar
+          </Button>
+        </Link>
+
+        <Button bg="dark" variant="dark">
+          <FontAwesomeIcon icon={faTrash} /> Eliminar
+        </Button>
+      </div>
+    ),
   },
   {
     id: 5,
@@ -54,7 +129,25 @@ const products = [
     nombre: "Visitante 5",
     telefono: "3158024578",
     email: "Visitante5@gmail.com",
-    acciones: "Acutualizar & Eliminar",
+    acciones: (
+      <div>
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faInfo} /> Detalles
+          </Button>
+        </Link>
+
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faEdit} /> Editar
+          </Button>
+        </Link>
+
+        <Button bg="dark" variant="dark">
+          <FontAwesomeIcon icon={faTrash} /> Eliminar
+        </Button>
+      </div>
+    ),
   },
   {
     id: 6,
@@ -62,7 +155,25 @@ const products = [
     nombre: "Visitante 6",
     telefono: "3158024578",
     email: "Visitante6@gmail.com",
-    acciones: "Acutualizar & Eliminar",
+    acciones: (
+      <div>
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faInfo} /> Detalles
+          </Button>
+        </Link>
+
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faEdit} /> Editar
+          </Button>
+        </Link>
+
+        <Button bg="dark" variant="dark">
+          <FontAwesomeIcon icon={faTrash} /> Eliminar
+        </Button>
+      </div>
+    ),
   },
   {
     id: 7,
@@ -70,7 +181,25 @@ const products = [
     nombre: "Visitante 7",
     telefono: "3158024578",
     email: "Visitante7@gmail.com",
-    acciones: "Acutualizar & Eliminar",
+    acciones: (
+      <div>
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faInfo} /> Detalles
+          </Button>
+        </Link>
+
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faEdit} /> Editar
+          </Button>
+        </Link>
+
+        <Button bg="dark" variant="dark">
+          <FontAwesomeIcon icon={faTrash} /> Eliminar
+        </Button>
+      </div>
+    ),
   },
   {
     id: 8,
@@ -78,7 +207,25 @@ const products = [
     nombre: "Visitante 8",
     telefono: "3158024578",
     email: "Visitante8@gmail.com",
-    acciones: "Acutualizar & Eliminar",
+    acciones: (
+      <div>
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faInfo} /> Detalles
+          </Button>
+        </Link>
+
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faEdit} /> Editar
+          </Button>
+        </Link>
+
+        <Button bg="dark" variant="dark">
+          <FontAwesomeIcon icon={faTrash} /> Eliminar
+        </Button>
+      </div>
+    ),
   },
   {
     id: 9,
@@ -86,7 +233,25 @@ const products = [
     nombre: "Visitante 9",
     telefono: "3158024578",
     email: "Visitante9@gmail.com",
-    acciones: "Acutualizar & Eliminar",
+    acciones: (
+      <div>
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faInfo} /> Detalles
+          </Button>
+        </Link>
+
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faEdit} /> Editar
+          </Button>
+        </Link>
+
+        <Button bg="dark" variant="dark">
+          <FontAwesomeIcon icon={faTrash} /> Eliminar
+        </Button>
+      </div>
+    ),
   },
   {
     id: 10,
@@ -94,7 +259,25 @@ const products = [
     nombre: "Visitante 10",
     telefono: "3158024578",
     email: "Visitante10@gmail.com",
-    acciones: "Acutualizar & Eliminar",
+    acciones: (
+      <div>
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faInfo} /> Detalles
+          </Button>
+        </Link>
+
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faEdit} /> Editar
+          </Button>
+        </Link>
+
+        <Button bg="dark" variant="dark">
+          <FontAwesomeIcon icon={faTrash} /> Eliminar
+        </Button>
+      </div>
+    ),
   },
   {
     id: 11,
@@ -102,7 +285,25 @@ const products = [
     nombre: "Visitante 11",
     telefono: "3158024578",
     email: "Visitante11@gmail.com",
-    acciones: "Acutualizar & Eliminar",
+    acciones: (
+      <div>
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faInfo} /> Detalles
+          </Button>
+        </Link>
+
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faEdit} /> Editar
+          </Button>
+        </Link>
+
+        <Button bg="dark" variant="dark">
+          <FontAwesomeIcon icon={faTrash} /> Eliminar
+        </Button>
+      </div>
+    ),
   },
   {
     id: 12,
@@ -110,7 +311,25 @@ const products = [
     nombre: "Visitante 12",
     telefono: "3158024578",
     email: "Visitante12@gmail.com",
-    acciones: "Acutualizar & Eliminar",
+    acciones: (
+      <div>
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faInfo} /> Detalles
+          </Button>
+        </Link>
+
+        <Link>
+          <Button bg="dark" variant="dark" className="me-2">
+            <FontAwesomeIcon icon={faEdit} /> Editar
+          </Button>
+        </Link>
+
+        <Button bg="dark" variant="dark">
+          <FontAwesomeIcon icon={faTrash} /> Eliminar
+        </Button>
+      </div>
+    ),
   },
 ];
 const columns = [
