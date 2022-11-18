@@ -1,14 +1,26 @@
-#fondo-visitante {
-    height: 950px;
-    background-image: url(../img/3.png);
+*{
+    margin: 0;
+    padding: 0;
+
+}
+body{
+    background-image: url(../img/1.png);
     background-size: cover;
     background-repeat: no-repeat;
+    /*background-position: center;*/
+    background-attachment: fixed;
+}
 
+#visitantes-container{
+    width: 100%;
+    padding: 20px;
+    margin: auto;
+    margin-top: 50px;
 }
 
 
 #bienvenida {
-    padding: 5%;
+    padding: 3%;
 }
 
 #visitantes-container h2,
@@ -69,3 +81,27 @@
     background-color: rgb(0, 255, 51);
     min-width: 100%;
 }
+
+/*-----*/
+#card-registrarse{
+    width: 100%;
+    margin: auto;
+
+    padding: 5%;
+    min-width: 35%;
+    opacity: 88%;
+    background-color: rgb(232, 233, 239);
+    border-radius: 6%;
+    
+}
+
+#form-registrarse{
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(232, 233, 239);
+    backdrop-filter: blur(10px);
+    opacity: 70%;
+}
+

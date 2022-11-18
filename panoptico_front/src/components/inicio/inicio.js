@@ -30,6 +30,7 @@ export default class inicio extends React.Component {
                   <Button id="boton-visitantes" variant="light">
                     Ingresar
                   </Button>
+                  <a href="http://localhost:3000/ingreso/visitantes">Prueba enlace</a>
                 </Card.Footer>
               </Card.Body>
             </Card>
@@ -47,10 +48,12 @@ export default class inicio extends React.Component {
                   <Button id="boton-estudiantes" variant="light">
                     Ingresar
                   </Button>
+                  <a href="#">Prueba enlace</a>
                 </Card.Footer>
               </Card.Body>
             </Card>
           </Row>
+          
         </Container>
       </div>
     );
