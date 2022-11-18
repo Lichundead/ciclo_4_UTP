@@ -39,7 +39,7 @@ export default class menuTablas extends React.Component {
                 Estudiantes
               </NavLink>
               <NavLink className="nav-link" to="/admin/visitantes/">
-                Visitante
+                Visitantes
               </NavLink>
               <NavLink className="nav-link" to="/admin/ingresos/">
                 Ingresos

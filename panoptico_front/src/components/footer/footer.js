@@ -10,7 +10,7 @@ export default class footer extends React.Component {
 
   render() {
     return (
-      <Navbar expand="lg" fixed="bottom">
+      <Navbar expand="lg">
         <Container>
           <img
             id="img-footer"

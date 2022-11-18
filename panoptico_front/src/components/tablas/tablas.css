@@ -5,6 +5,24 @@
 
 #container-tablas {
   padding-top: 100px;
-  padding-bottom: 50px;
-  min-height: 1100px;
+  padding-bottom: 20px;
+  min-height: 900px;
+}
+
+#tiulo-tablas {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: bold;
+}
+
+#separador-tablas {
+  margin-bottom: 50px;
+}
+
+#search-bar-0 {
+  margin-bottom: 20px;
+}
+
+.react-bs-table-sizePerPage-dropdown .dropdown-toggle {
+  float: left;
+  margin-bottom: 20px;
 }
