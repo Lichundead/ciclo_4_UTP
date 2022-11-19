@@ -30,7 +30,6 @@ export default class inicio extends React.Component {
                   <Button id="boton-visitantes" variant="light">
                     Ingresar
                   </Button>
-                  
                 </Card.Footer>
               </Card.Body>
             </Card>
@@ -48,12 +47,10 @@ export default class inicio extends React.Component {
                   <Button id="boton-estudiantes" variant="light">
                     Ingresar
                   </Button>
-                  
                 </Card.Footer>
               </Card.Body>
             </Card>
           </Row>
-          
         </Container>
       </div>
     );
