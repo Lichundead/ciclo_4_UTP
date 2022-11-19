@@ -11,6 +11,14 @@ export default class inicio extends React.Component {
     this.state = {};
   }
 
+  vistaEstudiantes() {
+    this.props.history.push("/ingreso/estudiantes/");
+  }
+
+  vistaVisitantes() {
+    this.props.history.push("/ingreso/visitantes/");
+  }
+
   render() {
     return (
       <div id="fondo-inicio">
@@ -27,7 +35,13 @@ export default class inicio extends React.Component {
                 </Card.Title>
                 <Card.Text>Por favor selecciona el botón ingresar</Card.Text>
                 <Card.Footer>
-                  <Button id="boton-visitantes" variant="light">
+                  <Button
+                    id="boton-visitantes"
+                    variant="light"
+                    onClick={() => {
+                      this.vistaVisitantes();
+                    }}
+                  >
                     Ingresar
                   </Button>
                 </Card.Footer>
@@ -44,7 +58,13 @@ export default class inicio extends React.Component {
                 </Card.Title>
                 <Card.Text>Por favor selecciona el botón ingresar</Card.Text>
                 <Card.Footer>
-                  <Button id="boton-estudiantes" variant="light">
+                  <Button
+                    id="boton-estudiantes"
+                    variant="light"
+                    onClick={() => {
+                      this.vistaEstudiantes();
+                    }}
+                  >
                     Ingresar
                   </Button>
                 </Card.Footer>
