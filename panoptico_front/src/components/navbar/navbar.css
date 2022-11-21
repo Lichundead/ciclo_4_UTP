@@ -1,0 +1,50 @@
+/* navbar admin */
+#navbar #dropdown-header .row:nth-child(1) {
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+#navbar #dropdown-header .row:nth-child(2) {
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+#navbar #titulo-logo {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS";
+  font-weight: bold;
+  font-size: 26px;
+  margin-right: 10%;
+}
+
+/* Navbar inicio */
+#dropdown-inicio {
+  width: 400px;
+}
+
+#dropdown-inicio .row:nth-child(1) {
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+#pano-title {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS";
+  margin: 0%;
+  padding: 0%;
+  margin-right: 2%;
+  font-weight: bold;
+  font-size: 26px;
+}
+
+/* Navbar registros */
+#pano-registros {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS";
+  margin: 0%;
+  padding: 0%;
+  margin-right: 2%;
+  font-weight: bold;
+  font-size: 26px;
+}

@@ -10,7 +10,7 @@ import {
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserTie } from "@fortawesome/free-solid-svg-icons";
-import "./navbarAdmin.css";
+import "./navbar.css";
 
 export default class menuTablas extends React.Component {
   constructor(props) {

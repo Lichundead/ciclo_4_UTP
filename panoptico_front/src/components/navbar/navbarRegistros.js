@@ -1,18 +1,9 @@
-import { faUserTie } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import {
-  Container,
-  Navbar,
-  DropdownButton,
-  Nav,
-  Row,
-  Dropdown,
-} from "react-bootstrap";
-import Login from "../login/login";
+import { Container, Navbar, Nav } from "react-bootstrap";
+
 import "./navbar.css";
 
-export default class navInicio extends React.Component {
+export default class NavRegistros extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -21,7 +12,7 @@ export default class navInicio extends React.Component {
     return (
       <Navbar fixed="top" bg="dark" variant="dark" expand="lg" id="navbar">
         <Container>
-          <Navbar.Brand id="pano-title" href="#home">
+          <Navbar.Brand id="pano-registros" href="#home">
             <img
               alt=""
               src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/052/519/original/icono.png?1668024209"
@@ -37,20 +28,6 @@ export default class navInicio extends React.Component {
               {/* <Nav.Link href="#home">Descubre</Nav.Link>
               <Nav.Link href="#link">FAQ</Nav.Link> */}
             </Nav>
-            <DropdownButton
-              id="dropdown-basic-button"
-              variant="dark"
-              menuVariant="dark"
-              title="Admin"
-              align="end"
-            >
-              <Dropdown.Header id="dropdown-inicio">
-                <Row>
-                  <FontAwesomeIcon icon={faUserTie} />
-                </Row>
-                <Login />
-              </Dropdown.Header>
-            </DropdownButton>
           </Navbar.Collapse>
         </Container>
       </Navbar>

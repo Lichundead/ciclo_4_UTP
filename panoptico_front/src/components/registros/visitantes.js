@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Form, Button, Row, Col } from "react-bootstrap";
 import "./visitantes.css";
-import NavInicio from "../navbar/navbarInicio";
+import NavRegistros from "../navbar/navbarRegistros";
 
 export default class VisitantesVista extends React.Component {
   constructor(props) {
@@ -12,11 +12,15 @@ export default class VisitantesVista extends React.Component {
   render() {
     return (
       <div id="div-body">
-        <NavInicio />
+        <NavRegistros />
         <Container id="contenedor">
           <Row>
             <Col>
-              <h2>¡BIENVENIDO VISITANTE<br />AL MUSEO PANÓPTICO!</h2>
+              <h2>
+                ¡BIENVENIDO VISITANTE
+                <br />
+                AL MUSEO PANÓPTICO!
+              </h2>
             </Col>
           </Row>
 
@@ -38,39 +42,36 @@ export default class VisitantesVista extends React.Component {
                     </Button>
                   </Form>
                 </div>
-                
+
                 <div id="contenedor_form-registro">
+                  <Form id="form1">
+                    <span>
+                      <h3>¿Eres nuevo visitante?</h3>
+                      <h4>Crea una cuenta!</h4>
+                    </span>
+                    <Form.Group>
+                      <Form.Control type="" placeholder="Nombre completo" />
+                      <Form.Text id="nombre" className=""></Form.Text>
+                    </Form.Group>
 
-                <Form id="form1">
-                  <span>
-                    <h3>¿Eres nuevo visitante?</h3>
-                    <h4>Crea una cuenta!</h4>
-                  </span>
-                  <Form.Group>
-                    <Form.Control type="" placeholder="Nombre completo" />
-                    <Form.Text id="nombre" className=""></Form.Text>
-                  </Form.Group>
+                    <Form.Group>
+                      <Form.Control type="" placeholder="Cédula" />
+                      <Form.Text id="cedula" className=""></Form.Text>
+                    </Form.Group>
 
-                  <Form.Group>
-                    <Form.Control type="" placeholder="Cédula" />
-                    <Form.Text id="cedula" className=""></Form.Text>
-                  </Form.Group>
+                    <Form.Group>
+                      <Form.Control type="" placeholder="Celular" />
+                      <Form.Text id="telefono" className=""></Form.Text>
+                    </Form.Group>
 
-                  <Form.Group>
-                    <Form.Control type="" placeholder="Celular" />
-                    <Form.Text id="telefono" className=""></Form.Text>
-                  </Form.Group>
-
-                  <Button id="btn-crearcuenta" variant="" type="submit">
-                    Crear cuenta
-                  </Button>
-                </Form>
+                    <Button id="btn-crearcuenta" variant="" type="submit">
+                      Crear cuenta
+                    </Button>
+                  </Form>
                 </div>
               </div>
 
-              <div id="contenedor_form-registro">   
-              
-              </div>
+              <div id="contenedor_form-registro"></div>
             </div>
           </Row>
         </Container>
