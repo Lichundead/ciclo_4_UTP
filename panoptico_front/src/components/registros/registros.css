@@ -8,7 +8,7 @@
 
 .fondo {
     height: 1000px;
-    background-image: url(../img/3.png);
+    background-image: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/054/910/original/3.png?1669048982);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -22,24 +22,46 @@
 
 }
 
+.main h1 {
+    margin-top: 8%;
+    margin-bottom: 0%;
+    display: flex;
+    justify-content: center;
+    font-weight: bolder;
+}
+
 .contenedor__todo {
-    margin-top: 170px;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 100px;
+    align-items: center;
     width: 100%;
     max-width: 800px;
-    margin-left: 22%;
-    position: relative;
+    margin-left: 20%;
+
 }
 
 .caja__trasera {
     width: 100%;
-    padding: 10px 20px;
+    height: 20rem;
     display: flex;
     justify-content: center;
-    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     background-color: #383937;
+    z-index: 1;
+}
+
+.caja__trasera,
+.button-div {
+    transition: .5s ease-out;
 
 }
+
+.button-div h2 {
+    margin-top: -10%;
+}
+
+
 
 .caja__trasera div {
     margin: 100px 40px;
@@ -88,8 +110,7 @@
     width: 100%;
     max-width: 380px;
     position: relative;
-    top: -215px;
-    left: 10px;
+
 
 
     /*La transicion va despues del codigo JS*/
@@ -98,11 +119,12 @@
 
 .contenedor__login-register form {
     width: 100%;
-    padding: 80px 20px;
+    padding: 10px 20px;
     background: white;
     position: absolute;
     border-radius: 20px;
 }
+
 
 .contenedor__login-register form h2 {
     font-size: 30px;
@@ -133,14 +155,6 @@
     outline: none;
 }
 
-.formulario__login {
-    opacity: 1;
-    display: block;
-}
-
-.formulario__register {
-    display: none;
-}
 
 @media screen and (max-width: 850px) {
 

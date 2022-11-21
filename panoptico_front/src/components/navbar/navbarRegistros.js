@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
 import "./navbar.css";
 
@@ -12,7 +13,7 @@ export default class NavRegistros extends React.Component {
     return (
       <Navbar fixed="top" bg="dark" variant="dark" expand="lg" id="navbar">
         <Container>
-          <Navbar.Brand id="pano-registros" href="#home">
+          <Navbar.Brand id="pano-registros">
             <img
               alt=""
               src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/052/519/original/icono.png?1668024209"
@@ -25,8 +26,9 @@ export default class NavRegistros extends React.Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              {/* <Nav.Link href="#home">Descubre</Nav.Link>
-              <Nav.Link href="#link">FAQ</Nav.Link> */}
+              <NavLink className="nav-link" to="/">
+                Regresar al Inicio
+              </NavLink>
             </Nav>
           </Navbar.Collapse>
         </Container>
