@@ -1,6 +1,14 @@
-#login-container {
-    margin-top: 10%;
+.fondo-login {
+    height: 1000px;
+    background-color: #E9E8E5;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 
+#login-container {
+    position: fixed;
+    margin-top: 200px;
+    margin-left: 15%;
 }
 
 #login-container h2,

@@ -49,50 +49,54 @@ export default class login extends React.Component {
 
   render() {
     return (
-      <Container id="login-container">
-        <MenuTablas />
-        <Loading show={this.state.loading} />
-        <Row>
-          <Col
-            sm="12"
-            xs="12"
-            md={{ span: 4, offset: 4 }}
-            lg={{ span: 4, offset: 4 }}
-            xl={{ span: 4, offset: 4 }}
-          >
-            <Row>
-              <h2>Iniciar Sesión</h2>
-            </Row>
-            <Row>
-              <Form>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Usuario:</Form.Label>
-                  <Form.Control
-                    onChange={(e) => this.setState({ usuario: e.target.value })}
-                  />
-                </Form.Group>
+      <div className="fondo-login">
+        <Container id="login-container">
+          <MenuTablas />
+          <Loading show={this.state.loading} />
+          <Row>
+            <Col
+              sm="12"
+              xs="12"
+              md={{ span: 4, offset: 4 }}
+              lg={{ span: 4, offset: 4 }}
+              xl={{ span: 4, offset: 4 }}
+            >
+              <Row>
+                <h2>Iniciar Sesión</h2>
+              </Row>
+              <Row>
+                <Form>
+                  <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Usuario:</Form.Label>
+                    <Form.Control
+                      onChange={(e) =>
+                        this.setState({ usuario: e.target.value })
+                      }
+                    />
+                  </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Label>Contraseña:</Form.Label>
-                  <Form.Control
-                    type="password"
-                    onChange={(e) => this.setState({ pass: e.target.value })}
-                  />
-                </Form.Group>
+                  <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>Contraseña:</Form.Label>
+                    <Form.Control
+                      type="password"
+                      onChange={(e) => this.setState({ pass: e.target.value })}
+                    />
+                  </Form.Group>
 
-                <Button
-                  variant="primary"
-                  onClick={() => {
-                    this.iniciarSesion();
-                  }}
-                >
-                  Iniciar Sesión
-                </Button>
-              </Form>
-            </Row>
-          </Col>
-        </Row>
-      </Container>
+                  <Button
+                    variant="primary"
+                    onClick={() => {
+                      this.iniciarSesion();
+                    }}
+                  >
+                    Iniciar Sesión
+                  </Button>
+                </Form>
+              </Row>
+            </Col>
+          </Row>
+        </Container>
+      </div>
     );
   }
 }
