@@ -20,14 +20,19 @@
 }
 
 /* Navbar inicio */
-#dropdown-inicio {
-  width: 400px;
-}
+
 
 #dropdown-inicio .row:nth-child(1) {
   font-size: 40px;
   display: flex;
   justify-content: center;
+}
+
+#dropdown-inicio .row:nth-child(2) {
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
 }
 
 #pano-title {

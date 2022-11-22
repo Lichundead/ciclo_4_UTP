@@ -1,79 +1,113 @@
 import React from "react";
-import { Container, Form, Button, Row, Col } from "react-bootstrap";
-import "./visitantes.css";
+import { Container, Form, Button } from "react-bootstrap";
+import "./registros.css";
 import NavRegistros from "../navbar/navbarRegistros";
 
 export default class VisitantesVista extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { form: "entrar" };
+
+    this.toggle = {
+      entrar: "registrate",
+      registrate: "entrar",
+    };
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
   }
 
   render() {
     return (
-      <div id="div-body">
+      <div className="fondo__2">
         <NavRegistros />
-        <Container id="contenedor">
-          <Row>
-            <Col>
-              <h2>
-                ¡BIENVENIDO VISITANTE
-                <br />
-                AL MUSEO PANÓPTICO!
-              </h2>
-            </Col>
-          </Row>
 
-          <Row>
-            <div id="contenedor_total">
-              <div id="caja_trasera">
-                <div id="caja_trasera-login">
-                  <Form>
-                    <h3>¿Ya tengo una cuenta?</h3>
-                    <p>¡Guardar asistencia!</p>
-                    <Form.Group>
-                      <Form.Label>Ingresa tu identificación</Form.Label>
-                      <Form.Control type="" placeholder="Cédula" />
-                      <Form.Text id="cedula" className=""></Form.Text>
-                    </Form.Group>
+        <Container className="main">
+          <h1>¡Bienvenidos Visitantes!</h1>
+          <div className="contenedor__todo">
+            <div className="caja__trasera">
+              <div
+                style={{
+                  transform: `translate(${
+                    this.state.form === "entrar" ? 0 : 350
+                  }px, 0px)`,
+                }}
+                className="contenedor__login-register"
+              >
+                <Form onSubmit={this.onSubmit.bind(this)}>
+                  <div
+                    style={{
+                      margin: "2px",
+                      padding: 0,
+                      transform: `translate(${
+                        this.state.form === "entrar" ? 0 : 0
+                      }px, 0px)`,
+                    }}
+                    className="titulo-div"
+                  >
+                    <h2>
+                      {this.state.form === "entrar"
+                        ? "¿Ya estás inscrito?"
+                        : "¿Primera Vez?"}
+                    </h2>
+                    <h6 style={{ color: "black" }}>
+                      {this.state.form === "entrar"
+                        ? "Ingresa tu cédula:"
+                        : "Regístrate para que puedas ingresar:"}
+                    </h6>
+                  </div>
+                  <Form.Control placeholder="Cédula" type="text" />
 
-                    <Button id="btn-registrarse" variant="" type="submit">
-                      Guardar
-                    </Button>
-                  </Form>
-                </div>
-
-                <div id="contenedor_form-registro">
-                  <Form id="form1">
-                    <span>
-                      <h3>¿Eres nuevo visitante?</h3>
-                      <h4>Crea una cuenta!</h4>
-                    </span>
-                    <Form.Group>
-                      <Form.Control type="" placeholder="Nombre completo" />
-                      <Form.Text id="nombre" className=""></Form.Text>
-                    </Form.Group>
-
-                    <Form.Group>
-                      <Form.Control type="" placeholder="Cédula" />
-                      <Form.Text id="cedula" className=""></Form.Text>
-                    </Form.Group>
-
-                    <Form.Group>
-                      <Form.Control type="" placeholder="Celular" />
-                      <Form.Text id="telefono" className=""></Form.Text>
-                    </Form.Group>
-
-                    <Button id="btn-crearcuenta" variant="" type="submit">
-                      Crear cuenta
-                    </Button>
-                  </Form>
-                </div>
+                  {this.state.form === "entrar" ? (
+                    ""
+                  ) : (
+                    <Form.Control placeholder="Nombre Completo" type="text" />
+                  )}
+                  {this.state.form === "entrar" ? (
+                    ""
+                  ) : (
+                    <Form.Control placeholder="Teléfono" type="text" />
+                  )}
+                  {this.state.form === "entrar" ? (
+                    ""
+                  ) : (
+                    <Form.Control
+                      placeholder="Correo Electrónico"
+                      type="text"
+                    />
+                  )}
+                  <Button className="button-primary">Acceder</Button>
+                </Form>
               </div>
-
-              <div id="contenedor_form-registro"></div>
+              <div
+                style={{
+                  transform: `translate(${
+                    this.state.form === "entrar" ? 0 : -450
+                  }px, 0px)`,
+                }}
+                className="button-div"
+              >
+                <h2>
+                  {this.state.form === "entrar"
+                    ? "¿Primera vez en el Museo?"
+                    : "¿Ya habías venido?"}
+                </h2>
+                <h6>
+                  {this.state.form === "entrar"
+                    ? "Regístrate para que puedas ingresar:"
+                    : "Ingresa tu identificación para entrar al museo:"}
+                </h6>
+                <Button
+                  onClick={() => {
+                    this.setState({ form: this.toggle[this.state.form] });
+                  }}
+                >
+                  {this.toggle[this.state.form]}
+                </Button>
+              </div>
             </div>
-          </Row>
+          </div>
         </Container>
       </div>
     );

@@ -6,14 +6,26 @@ import Estudiantes from "../tablas/estudiantes";
 import Visitantes from "../tablas/visitantes";
 import VisitantesVista from "../registros/visitantes";
 import EstudiantesVista from "../registros/estudiantes";
+import Login from "../login/login";
+import PrivateRoute from "../auth/privaterouter";
 
 export default function AppRoutes() {
   return (
     <Router>
       <Switch>
-        <Route exact path={["/admin/ingresos/"]} component={Ingresos} />
-        <Route exact path={["/admin/estudiantes/"]} component={Estudiantes} />
-        <Route exact path={["/admin/visitantes/"]} component={Visitantes} />
+        <Route exact path={["/"]} component={Inicio} />
+        <Route exact path={["/login"]} component={Login} />
+        <PrivateRoute exact path={["/admin/ingresos/"]} component={Ingresos} />
+        <PrivateRoute
+          exact
+          path={["/admin/estudiantes/"]}
+          component={Estudiantes}
+        />
+        <PrivateRoute
+          exact
+          path={["/admin/visitantes/"]}
+          component={Visitantes}
+        />
         <Route
           exact
           path={["/ingreso/visitantes/"]}
@@ -24,7 +36,7 @@ export default function AppRoutes() {
           path={["/ingreso/estudiantes/"]}
           component={EstudiantesVista}
         />
-        <Route exact path={["/"]} component={Inicio} />
+
         <Route
           path={"*"}
           component={() => (

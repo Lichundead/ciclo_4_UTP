@@ -9,7 +9,7 @@ import {
   Row,
   Dropdown,
 } from "react-bootstrap";
-import Login from "../login/login";
+import { NavLink } from "react-router-dom";
 import "./navbar.css";
 
 export default class navInicio extends React.Component {
@@ -17,6 +17,11 @@ export default class navInicio extends React.Component {
     super(props);
     this.state = {};
   }
+
+  login() {
+    this.props.history.push("/login");
+  }
+
   render() {
     return (
       <Navbar fixed="top" bg="dark" variant="dark" expand="lg" id="navbar">
@@ -48,8 +53,16 @@ export default class navInicio extends React.Component {
                 <Row>
                   <FontAwesomeIcon icon={faUserTie} />
                 </Row>
-                <Login />
+                <Row>#Administrador#</Row>
               </Dropdown.Header>
+              <Dropdown.Divider />
+              <NavLink
+                style={{ textAlign: "center" }}
+                className="nav-link"
+                to="/login"
+              >
+                Iniciar Sesión
+              </NavLink>
             </DropdownButton>
           </Navbar.Collapse>
         </Container>
