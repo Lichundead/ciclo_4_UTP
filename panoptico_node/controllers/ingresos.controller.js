@@ -3,7 +3,7 @@ const Estudiante = require("../models/estudiantes.model");
 const Visitante = require("../models/visitantes.model");
 let date = new Date();
 date = new Date(date);
-date = date.toLocaleString();
+date = date.toLocaleDateString() + ", " + date.toLocaleTimeString();
 let response = {
   msg: "",
   exito: false,
