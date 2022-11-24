@@ -27,12 +27,12 @@ app.use(cors());
 
 //Mongo conection:A partir de aqui comienza a llamar la conexión
 database.mongoConnect();
+app.use("/ingresos", ingresosRouter);
 app.use("/admins", adminsRouter);
 app.use(auth);
 
 //Router: A partir de aqui comienza el router
 app.use("/visitas_guiadas", visitantesRouter);
-app.use("/ingresos", ingresosRouter);
 app.use("/estudiantes_inscritos", estudiantesRouter);
 
 // catch 404 and forward to error handler
