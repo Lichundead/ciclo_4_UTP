@@ -1,341 +1,19 @@
 import React from "react";
-import { Button, Container, Row } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
+import { request } from "../helper/helper";
+import "./tablas.css";
+import DataGrid from "../grid/grid";
 import MenuTablas from "../navbar/navbarAdmin";
 import Footer from "../footer/footer";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInfo, faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
-import "./tablas.css";
-import BootstrapTable from "react-bootstrap-table-next";
-import paginationFactory, {
-  PaginationProvider,
-  PaginationListStandalone,
-  SizePerPageDropdownStandalone,
-} from "react-bootstrap-table2-paginator";
-import ToolkitProvider, {
-  Search,
-} from "react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit";
-import { Link } from "react-router-dom";
+import ConfirmationPromprs from "../prompts/confirmation";
+import MessagePrompt from "../prompts/message";
+import Loading from "../loading/loading";
 
-const { SearchBar } = Search;
-
-const products = [
-  {
-    id: 1,
-    cedula: 1031458752,
-    nombre: "Estudiante 1",
-    telefono: "3158024578",
-    email: "estudiante1@gmail.com",
-    acciones: (
-      <div>
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faInfo} /> Detalles
-          </Button>
-        </Link>
-
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faEdit} /> Editar
-          </Button>
-        </Link>
-
-        <Button bg="dark" variant="dark">
-          <FontAwesomeIcon icon={faTrash} /> Eliminar
-        </Button>
-      </div>
-    ),
-  },
-  {
-    id: 2,
-    cedula: 1031458752,
-    nombre: "Estudiante 2",
-    telefono: "3158024578",
-    email: "estudiante2@gmail.com",
-    acciones: (
-      <div>
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faInfo} /> Detalles
-          </Button>
-        </Link>
-
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faEdit} /> Editar
-          </Button>
-        </Link>
-
-        <Button bg="dark" variant="dark">
-          <FontAwesomeIcon icon={faTrash} /> Eliminar
-        </Button>
-      </div>
-    ),
-  },
-  {
-    id: 3,
-    cedula: 1031458752,
-    nombre: "Estudiante 3",
-    telefono: "3158024578",
-    email: "estudiante3@gmail.com",
-    acciones: (
-      <div>
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faInfo} /> Detalles
-          </Button>
-        </Link>
-
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faEdit} /> Editar
-          </Button>
-        </Link>
-
-        <Button bg="dark" variant="dark">
-          <FontAwesomeIcon icon={faTrash} /> Eliminar
-        </Button>
-      </div>
-    ),
-  },
-  {
-    id: 4,
-    cedula: 1031458752,
-    nombre: "Estudiante 4",
-    telefono: "3158024578",
-    email: "estudiante4@gmail.com",
-    acciones: (
-      <div>
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faInfo} /> Detalles
-          </Button>
-        </Link>
-
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faEdit} /> Editar
-          </Button>
-        </Link>
-
-        <Button bg="dark" variant="dark">
-          <FontAwesomeIcon icon={faTrash} /> Eliminar
-        </Button>
-      </div>
-    ),
-  },
-  {
-    id: 5,
-    cedula: 1031458752,
-    nombre: "Estudiante 5",
-    telefono: "3158024578",
-    email: "estudiante5@gmail.com",
-    acciones: (
-      <div>
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faInfo} /> Detalles
-          </Button>
-        </Link>
-
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faEdit} /> Editar
-          </Button>
-        </Link>
-
-        <Button bg="dark" variant="dark">
-          <FontAwesomeIcon icon={faTrash} /> Eliminar
-        </Button>
-      </div>
-    ),
-  },
-  {
-    id: 6,
-    cedula: 1031458752,
-    nombre: "Estudiante 6",
-    telefono: "3158024578",
-    email: "estudiante6@gmail.com",
-    acciones: (
-      <div>
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faInfo} /> Detalles
-          </Button>
-        </Link>
-
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faEdit} /> Editar
-          </Button>
-        </Link>
-
-        <Button bg="dark" variant="dark">
-          <FontAwesomeIcon icon={faTrash} /> Eliminar
-        </Button>
-      </div>
-    ),
-  },
-  {
-    id: 7,
-    cedula: 1031458752,
-    nombre: "Estudiante 7",
-    telefono: "3158024578",
-    email: "estudiante7@gmail.com",
-    acciones: (
-      <div>
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faInfo} /> Detalles
-          </Button>
-        </Link>
-
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faEdit} /> Editar
-          </Button>
-        </Link>
-
-        <Button bg="dark" variant="dark">
-          <FontAwesomeIcon icon={faTrash} /> Eliminar
-        </Button>
-      </div>
-    ),
-  },
-  {
-    id: 8,
-    cedula: 1031458752,
-    nombre: "Estudiante 8",
-    telefono: "3158024578",
-    email: "estudiante8@gmail.com",
-    acciones: (
-      <div>
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faInfo} /> Detalles
-          </Button>
-        </Link>
-
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faEdit} /> Editar
-          </Button>
-        </Link>
-
-        <Button bg="dark" variant="dark">
-          <FontAwesomeIcon icon={faTrash} /> Eliminar
-        </Button>
-      </div>
-    ),
-  },
-  {
-    id: 9,
-    cedula: 1031458752,
-    nombre: "Estudiante 9",
-    telefono: "3158024578",
-    email: "estudiante9@gmail.com",
-    acciones: (
-      <div>
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faInfo} /> Detalles
-          </Button>
-        </Link>
-
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faEdit} /> Editar
-          </Button>
-        </Link>
-
-        <Button bg="dark" variant="dark">
-          <FontAwesomeIcon icon={faTrash} /> Eliminar
-        </Button>
-      </div>
-    ),
-  },
-  {
-    id: 10,
-    cedula: 1031458752,
-    nombre: "Estudiante 10",
-    telefono: "3158024578",
-    email: "estudiante10@gmail.com",
-    acciones: (
-      <div>
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faInfo} /> Detalles
-          </Button>
-        </Link>
-
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faEdit} /> Editar
-          </Button>
-        </Link>
-
-        <Button bg="dark" variant="dark">
-          <FontAwesomeIcon icon={faTrash} /> Eliminar
-        </Button>
-      </div>
-    ),
-  },
-  {
-    id: 11,
-    cedula: 1031458752,
-    nombre: "Estudiante 11",
-    telefono: "3158024578",
-    email: "estudiante11@gmail.com",
-    acciones: (
-      <div>
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faInfo} /> Detalles
-          </Button>
-        </Link>
-
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faEdit} /> Editar
-          </Button>
-        </Link>
-
-        <Button bg="dark" variant="dark">
-          <FontAwesomeIcon icon={faTrash} /> Eliminar
-        </Button>
-      </div>
-    ),
-  },
-  {
-    id: 12,
-    cedula: 1031458752,
-    nombre: "Estudiante 12",
-    telefono: "3158024578",
-    email: "estudiante12@gmail.com",
-    acciones: (
-      <div>
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faInfo} /> Detalles
-          </Button>
-        </Link>
-
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faEdit} /> Editar
-          </Button>
-        </Link>
-
-        <Button bg="dark" variant="dark">
-          <FontAwesomeIcon icon={faTrash} /> Eliminar
-        </Button>
-      </div>
-    ),
-  },
-];
 const columns = [
   {
     dataField: "id",
-    text: "#",
+    text: "ID Estudiante",
+    hidden: true,
   },
   {
     dataField: "cedula",
@@ -353,59 +31,130 @@ const columns = [
     dataField: "email",
     text: "Email Estudiante",
   },
-  {
-    dataField: "acciones",
-    text: "Acciones Estudiante",
-  },
 ];
 
 export default class estudiantes extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      loading: false,
+      cedula: null,
+      confirmation: {
+        title: "Eliminar Estudiante",
+        text: "¿Está seguro que desea eliminar el estudiante, recuerde que esta acción es irreversible?",
+        show: false,
+      },
+      message: {
+        text: "",
+        show: false,
+      },
+    };
+
+    this.onClickDeleteButton = this.onClickDeleteButton.bind(this);
+    this.onCancel = this.onCancel.bind(this);
+    this.onConfirm = this.onConfirm.bind(this);
+  }
+  componentDidMount() {
+    request
+      .get(this.props.url)
+      .then((response) => {
+        this.setState({ rows: response.data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  onClickDeleteButton(row) {
+    this.setState({
+      cedula: row.cedula,
+      confirmation: {
+        ...this.state.confirmation,
+        show: true,
+      },
+    });
+  }
+
+  onCancel() {
+    this.setState({
+      confirmation: {
+        ...this.state.confirmation,
+        show: false,
+      },
+    });
+  }
+
+  onConfirm() {
+    this.setState(
+      {
+        confirmation: {
+          ...this.state.confirmation,
+          show: false,
+        },
+      },
+      this.eliminarEstudiante()
+    );
+  }
+
+  eliminarEstudiante() {
+    this.setState({ loading: true });
+    request
+      .delete(`/estudiantes_inscritos/${this.state.cedula}`)
+      .then((response) => {
+        this.setState({
+          loading: false,
+          message: {
+            text: response.data.msg,
+            show: true,
+          },
+        });
+        if (response.data.exito) this.reloadPage();
+      })
+      .catch((err) => {
+        console.error(err);
+        this.setState({ loading: false });
+      });
+  }
+
+  reloadPage() {
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   }
 
   render() {
-    const options = {
-      custom: true,
-      totalSize: products.length,
-    };
     return (
       <div className="tablas-admin">
         <MenuTablas />
         <Container id="container-tablas">
+          <ConfirmationPromprs
+            show={this.state.confirmation.show}
+            title={this.state.confirmation.title}
+            text={this.state.confirmation.text}
+            onCancel={this.onCancel}
+            onConfirm={this.onConfirm}
+          />
+
+          <MessagePrompt
+            text={this.state.message.text}
+            showt={this.state.message.show}
+            duration={2500}
+            onExited={this.onExitedMessage}
+          />
+
+          <Loading show={this.state.loading} />
+
           <Row>
             <h1 id="tiulo-tablas">Estudiantes</h1>
             <hr id="separador-tablas" />
           </Row>
           <Row>
-            <ToolkitProvider
-              keyField="id"
-              data={products}
+            <DataGrid
+              url="/estudiantes_inscritos"
               columns={columns}
-              search
-            >
-              {(props) => (
-                <>
-                  <SearchBar {...props.searchProps} />
-                  <PaginationProvider pagination={paginationFactory(options)}>
-                    {({ paginationProps, paginationTableProps }) => (
-                      <div>
-                        <SizePerPageDropdownStandalone {...paginationProps} />
-                        <BootstrapTable
-                          keyField="id"
-                          data={products}
-                          columns={columns}
-                          {...paginationTableProps}
-                          {...props.baseProps}
-                        />
-                        <PaginationListStandalone {...paginationProps} />
-                      </div>
-                    )}
-                  </PaginationProvider>
-                </>
-              )}
-            </ToolkitProvider>
+              showDeleteButton={true}
+              onClickDeleteButton={this.onClickDeleteButton}
+            />
           </Row>
         </Container>
         <Footer />

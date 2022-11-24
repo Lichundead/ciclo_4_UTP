@@ -7,7 +7,7 @@ import Cookies from "universal-cookie";
 import { calcularExpirarSesion } from "../helper/helper";
 import Loading from "../loading/loading";
 import app from "../../app.json";
-import MenuTablas from "../navbar/navbarAdmin";
+import NavRegistros from "../navbar/navbarRegistros";
 
 const { APIHOST } = app;
 const cookies = new Cookies();
@@ -51,7 +51,7 @@ export default class login extends React.Component {
     return (
       <div className="fondo-login">
         <Container id="login-container">
-          <MenuTablas />
+          <NavRegistros />
           <Loading show={this.state.loading} />
           <Row>
             <Col

@@ -1,311 +1,156 @@
 import React from "react";
-import { Button, Container, Row } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
+import { request } from "../helper/helper";
+import "./tablas.css";
+import DataGrid from "../grid/grid";
 import MenuTablas from "../navbar/navbarAdmin";
 import Footer from "../footer/footer";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInfo, faTrash } from "@fortawesome/free-solid-svg-icons";
-import "./tablas.css";
-import BootstrapTable from "react-bootstrap-table-next";
-import paginationFactory, {
-  PaginationProvider,
-  PaginationListStandalone,
-  SizePerPageDropdownStandalone,
-} from "react-bootstrap-table2-paginator";
-import ToolkitProvider, {
-  Search,
-} from "react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit";
-import { Link } from "react-router-dom";
+import ConfirmationPromprs from "../prompts/confirmation";
+import MessagePrompt from "../prompts/message";
+import Loading from "../loading/loading";
 
-const { SearchBar } = Search;
-
-const products = [
-  {
-    id: 1,
-    fecha: "11/09/2022 - 6:50pm",
-    cedula: 1031458752,
-    rol: "Estudiante",
-    acciones: (
-      <div>
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faInfo} /> Detalles
-          </Button>
-        </Link>
-        <Button bg="dark" variant="dark">
-          <FontAwesomeIcon icon={faTrash} /> Eliminar
-        </Button>
-      </div>
-    ),
-  },
-  {
-    id: 2,
-    fecha: "10/09/2022 - 6:50pm",
-    cedula: 1031644347,
-    rol: "Estudiante",
-    acciones: (
-      <div>
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faInfo} /> Detalles
-          </Button>
-        </Link>
-        <Button bg="dark" variant="dark">
-          <FontAwesomeIcon icon={faTrash} /> Eliminar
-        </Button>
-      </div>
-    ),
-  },
-  {
-    id: 3,
-    fecha: "10/09/2022 - 6:50pm",
-    cedula: 1031458752,
-    rol: "Estudiante",
-    acciones: (
-      <div>
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faInfo} /> Detalles
-          </Button>
-        </Link>
-        <Button bg="dark" variant="dark">
-          <FontAwesomeIcon icon={faTrash} /> Eliminar
-        </Button>
-      </div>
-    ),
-  },
-  {
-    id: 4,
-    fecha: "10/09/2022 - 6:50pm",
-    cedula: 1031458752,
-    rol: "Visitante",
-    acciones: (
-      <div>
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faInfo} /> Detalles
-          </Button>
-        </Link>
-        <Button bg="dark" variant="dark">
-          <FontAwesomeIcon icon={faTrash} /> Eliminar
-        </Button>
-      </div>
-    ),
-  },
-  {
-    id: 5,
-    fecha: "12/09/2022 - 6:50pm",
-    cedula: 1031458752,
-    rol: "Visitante",
-    acciones: (
-      <div>
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faInfo} /> Detalles
-          </Button>
-        </Link>
-        <Button bg="dark" variant="dark">
-          <FontAwesomeIcon icon={faTrash} /> Eliminar
-        </Button>
-      </div>
-    ),
-  },
-  {
-    id: 6,
-    fecha: "11/09/2022 - 6:51pm",
-    cedula: 1031458752,
-    rol: "Estudiante",
-    acciones: (
-      <div>
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faInfo} /> Detalles
-          </Button>
-        </Link>
-        <Button bg="dark" variant="dark">
-          <FontAwesomeIcon icon={faTrash} /> Eliminar
-        </Button>
-      </div>
-    ),
-  },
-  {
-    id: 7,
-    fecha: "10/09/2022 - 6:50pm",
-    cedula: 1031458752,
-    rol: "Estudiante",
-    acciones: (
-      <div>
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faInfo} /> Detalles
-          </Button>
-        </Link>
-        <Button bg="dark" variant="dark">
-          <FontAwesomeIcon icon={faTrash} /> Eliminar
-        </Button>
-      </div>
-    ),
-  },
-  {
-    id: 8,
-    fecha: "10/09/2022 - 6:50pm",
-    cedula: 1031458752,
-    rol: "Estudiante",
-    acciones: (
-      <div>
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faInfo} /> Detalles
-          </Button>
-        </Link>
-        <Button bg="dark" variant="dark">
-          <FontAwesomeIcon icon={faTrash} /> Eliminar
-        </Button>
-      </div>
-    ),
-  },
-  {
-    id: 9,
-    fecha: "10/09/2022 - 6:50pm",
-    cedula: 1031458752,
-    rol: "Estudiante",
-    acciones: (
-      <div>
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faInfo} /> Detalles
-          </Button>
-        </Link>
-        <Button bg="dark" variant="dark">
-          <FontAwesomeIcon icon={faTrash} /> Eliminar
-        </Button>
-      </div>
-    ),
-  },
-  {
-    id: 10,
-    fecha: "10/09/2022 - 6:50pm",
-    cedula: 1031458752,
-    rol: "Estudiante",
-    acciones: (
-      <div>
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faInfo} /> Detalles
-          </Button>
-        </Link>
-        <Button bg="dark" variant="dark">
-          <FontAwesomeIcon icon={faTrash} /> Eliminar
-        </Button>
-      </div>
-    ),
-  },
-  {
-    id: 11,
-    fecha: "10/09/2022 - 6:50pm",
-    cedula: 1031458752,
-    rol: "Estudiante",
-    acciones: (
-      <div>
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faInfo} /> Detalles
-          </Button>
-        </Link>
-        <Button bg="dark" variant="dark">
-          <FontAwesomeIcon icon={faTrash} /> Eliminar
-        </Button>
-      </div>
-    ),
-  },
-  {
-    id: 12,
-    fecha: "10/09/2022 - 6:50pm",
-    cedula: 1031458752,
-    rol: "Estudiante",
-    acciones: (
-      <div>
-        <Link>
-          <Button bg="dark" variant="dark" className="me-2">
-            <FontAwesomeIcon icon={faInfo} /> Detalles
-          </Button>
-        </Link>
-        <Button bg="dark" variant="dark">
-          <FontAwesomeIcon icon={faTrash} /> Eliminar
-        </Button>
-      </div>
-    ),
-  },
-];
 const columns = [
   {
-    dataField: "id",
-    text: "#",
+    dataField: "_id",
+    text: "ID Ingreso",
+    hidden: true,
   },
   {
     dataField: "fecha",
     text: "Fecha Ingreso",
   },
   {
-    dataField: "cedula",
+    dataField: "id_ingreso",
     text: "Cedula Ingreso",
   },
   {
     dataField: "rol",
     text: "Rol",
   },
-  {
-    dataField: "acciones",
-    text: "Acciones Ingreso",
-  },
 ];
 
 export default class ingresos extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      loading: false,
+      id_ingreso: null,
+      confirmation: {
+        title: "Eliminar Ingreso",
+        text: "¿Está seguro que desea eliminar el ingreso, recuerde que esta acción es irreversible?",
+        show: false,
+      },
+      message: {
+        text: "",
+        show: false,
+      },
+    };
+
+    this.onClickDeleteButton = this.onClickDeleteButton.bind(this);
+    this.onCancel = this.onCancel.bind(this);
+    this.onConfirm = this.onConfirm.bind(this);
+  }
+  componentDidMount() {
+    request
+      .get(this.props.url)
+      .then((response) => {
+        this.setState({ rows: response.data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  onClickDeleteButton(row) {
+    this.setState({
+      id_ingreso: row.id_ingreso,
+      confirmation: {
+        ...this.state.confirmation,
+        show: true,
+      },
+    });
+  }
+
+  onCancel() {
+    this.setState({
+      confirmation: {
+        ...this.state.confirmation,
+        show: false,
+      },
+    });
+  }
+
+  onConfirm() {
+    this.setState(
+      {
+        confirmation: {
+          ...this.state.confirmation,
+          show: false,
+        },
+      },
+      this.eliminarIngreso()
+    );
+  }
+
+  eliminarIngreso() {
+    this.setState({ loading: true });
+    request
+      .delete(`/ingresos/${this.state.id_ingreso}`)
+      .then((response) => {
+        this.setState({
+          loading: false,
+          message: {
+            text: response.data.msg,
+            show: true,
+          },
+        });
+        if (response.data.exito) this.reloadPage();
+      })
+      .catch((err) => {
+        console.error(err);
+        this.setState({ loading: false });
+      });
+  }
+
+  reloadPage() {
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   }
 
   render() {
-    const options = {
-      custom: true,
-      totalSize: products.length,
-    };
     return (
       <div className="tablas-admin">
         <MenuTablas />
         <Container id="container-tablas">
+          <ConfirmationPromprs
+            show={this.state.confirmation.show}
+            title={this.state.confirmation.title}
+            text={this.state.confirmation.text}
+            onCancel={this.onCancel}
+            onConfirm={this.onConfirm}
+          />
+
+          <MessagePrompt
+            text={this.state.message.text}
+            showt={this.state.message.show}
+            duration={2500}
+            onExited={this.onExitedMessage}
+          />
+
+          <Loading show={this.state.loading} />
+
           <Row>
             <h1 id="tiulo-tablas">Ingresos</h1>
             <hr id="separador-tablas" />
           </Row>
           <Row>
-            <ToolkitProvider
-              keyField="id"
-              data={products}
+            <DataGrid
+              url="/ingresos"
               columns={columns}
-              search
-            >
-              {(props) => (
-                <>
-                  <SearchBar {...props.searchProps} />
-                  <PaginationProvider pagination={paginationFactory(options)}>
-                    {({ paginationProps, paginationTableProps }) => (
-                      <div>
-                        <SizePerPageDropdownStandalone {...paginationProps} />
-                        <BootstrapTable
-                          keyField="id"
-                          data={products}
-                          columns={columns}
-                          {...paginationTableProps}
-                          {...props.baseProps}
-                        />
-                        <PaginationListStandalone {...paginationProps} />
-                      </div>
-                    )}
-                  </PaginationProvider>
-                </>
-              )}
-            </ToolkitProvider>
+              showDeleteButton={true}
+              onClickDeleteButton={this.onClickDeleteButton}
+            />
           </Row>
         </Container>
         <Footer />

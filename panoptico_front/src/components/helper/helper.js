@@ -39,4 +39,10 @@ export const request = {
   post2: function (services, data) {
     return axios.post(`${APIHOST}${services}`, data);
   },
+  delete: function (services) {
+    let token = renovarSesion();
+    return axios.delete(`${APIHOST}${services}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+  },
 };
