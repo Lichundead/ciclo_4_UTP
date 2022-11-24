@@ -59,7 +59,7 @@ export default class navInicio extends React.Component {
               <NavLink
                 style={{ textAlign: "center" }}
                 className="nav-link"
-                to="/login"
+                to="/admin/ingresos/"
               >
                 Iniciar Sesión
               </NavLink>
