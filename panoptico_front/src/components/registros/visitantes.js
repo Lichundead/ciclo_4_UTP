@@ -2,16 +2,56 @@ import React from "react";
 import { Container, Form, Button } from "react-bootstrap";
 import "./registros.css";
 import NavRegistros from "../navbar/navbarRegistros";
+import { request } from "../helper/helper";
+import Loading from "../loading/loading";
 
 export default class VisitantesVista extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { form: "entrar" };
+    this.state = {
+      form: "entrar",
+      loading: false,
+      visitante: {
+        cedula: "",
+        nombre: "",
+        telefono: "",
+        email: "",
+      },
+    };
 
     this.toggle = {
       entrar: "registrate",
       registrate: "entrar",
     };
+  }
+
+  setValue(visitantes, value) {
+    this.setState({
+      visitante: {
+        ...this.state.visitante,
+        [visitantes]: value,
+      },
+    });
+  }
+
+  guardarVisitantes() {
+    this.setState({ loading: true });
+    request
+      .post2("/ingresos/registros_visitantes", this.state.visitante)
+      .then((response) => {
+        if (response.data.exito) {
+          console.log(response.data);
+          alert("Bienvenido al Museo Panóptico");
+          window.location.href = "/";
+        } else {
+          alert("¡Datos Incorrectos!");
+        }
+        this.setState({ loading: false });
+      })
+      .catch((err) => {
+        console.error(err);
+        this.setState({ loading: true });
+      });
   }
 
   onSubmit(e) {
@@ -21,6 +61,7 @@ export default class VisitantesVista extends React.Component {
   render() {
     return (
       <div className="fondo__2">
+        <Loading show={this.state.loading} />
         <NavRegistros />
 
         <Container className="main">
@@ -57,27 +98,44 @@ export default class VisitantesVista extends React.Component {
                         : "Regístrate para que puedas ingresar:"}
                     </h6>
                   </div>
-                  <Form.Control placeholder="Cédula" type="text" />
+                  <Form.Control
+                    placeholder="Cédula"
+                    onChange={(e) => this.setValue("cedula", e.target.value)}
+                  />
 
                   {this.state.form === "entrar" ? (
                     ""
                   ) : (
-                    <Form.Control placeholder="Nombre Completo" type="text" />
+                    <Form.Control
+                      placeholder="Nombre Completo"
+                      onChange={(e) => this.setValue("nombre", e.target.value)}
+                    />
                   )}
                   {this.state.form === "entrar" ? (
                     ""
                   ) : (
-                    <Form.Control placeholder="Teléfono" type="text" />
+                    <Form.Control
+                      placeholder="Teléfono"
+                      onChange={(e) =>
+                        this.setValue("telefono", e.target.value)
+                      }
+                    />
                   )}
                   {this.state.form === "entrar" ? (
                     ""
                   ) : (
                     <Form.Control
                       placeholder="Correo Electrónico"
-                      type="text"
+                      type="email"
+                      onChange={(e) => this.setValue("email", e.target.value)}
                     />
                   )}
-                  <Button className="button-primary">Acceder</Button>
+                  <Button
+                    className="button-primary"
+                    onClick={() => console.log(this.guardarVisitantes())}
+                  >
+                    Acceder
+                  </Button>
                 </Form>
               </div>
               <div

@@ -37,7 +37,7 @@ export default class EstudiantesVista extends React.Component {
   guardarEstudiantes() {
     this.setState({ loading: true });
     request
-      .post("/ingresos/registros_estudiantes", this.state.estudiante)
+      .post2("/ingresos/registros_estudiantes", this.state.estudiante)
       .then((response) => {
         if (response.data.exito) {
           console.log(response.data);
