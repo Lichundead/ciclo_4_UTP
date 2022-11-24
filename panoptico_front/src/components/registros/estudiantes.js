@@ -1,17 +1,57 @@
 import React from "react";
 import { Button, Container, Form } from "react-bootstrap";
+import { request } from "../helper/helper";
 import NavRegistros from "../navbar/navbarRegistros";
 import "./registros.css";
+import Loading from "../loading/loading";
 
 export default class EstudiantesVista extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { form: "entrar" };
+    this.state = {
+      form: "entrar",
+      loading: false,
+      empleado: {
+        cedula: "",
+        nombre: "",
+        telefono: "",
+        email: "",
+      },
+    };
 
     this.toggle = {
       entrar: "registrate",
       registrate: "entrar",
     };
+  }
+
+  setValue(estudiantes, value) {
+    this.setState({
+      estudiante: {
+        ...this.state.estudiante,
+        [estudiantes]: value,
+      },
+    });
+  }
+
+  guardarEstudiantes() {
+    this.setState({ loading: true });
+    request
+      .post("/ingresos/registros_estudiantes", this.state.estudiante)
+      .then((response) => {
+        if (response.data.exito) {
+          console.log(response.data);
+          alert("Bienvenido al Museo Panóptico");
+          window.location.href = "/";
+        } else {
+          alert("¡Datos Incorrectos!");
+        }
+        this.setState({ loading: false });
+      })
+      .catch((err) => {
+        console.error(err);
+        this.setState({ loading: true });
+      });
   }
 
   onSubmit(e) {
@@ -21,6 +61,7 @@ export default class EstudiantesVista extends React.Component {
   render() {
     return (
       <div className="fondo">
+        <Loading show={this.state.loading} />
         <NavRegistros />
 
         <Container className="main">
@@ -57,27 +98,44 @@ export default class EstudiantesVista extends React.Component {
                         : "Regístrate para que puedas ingresar:"}
                     </h6>
                   </div>
-                  <Form.Control placeholder="Cédula" type="text" />
+                  <Form.Control
+                    placeholder="Cédula"
+                    onChange={(e) => this.setValue("cedula", e.target.value)}
+                  />
 
                   {this.state.form === "entrar" ? (
                     ""
                   ) : (
-                    <Form.Control placeholder="Nombre Completo" type="text" />
+                    <Form.Control
+                      placeholder="Nombre Completo"
+                      onChange={(e) => this.setValue("nombre", e.target.value)}
+                    />
                   )}
                   {this.state.form === "entrar" ? (
                     ""
                   ) : (
-                    <Form.Control placeholder="Teléfono" type="text" />
+                    <Form.Control
+                      placeholder="Teléfono"
+                      onChange={(e) =>
+                        this.setValue("telefono", e.target.value)
+                      }
+                    />
                   )}
                   {this.state.form === "entrar" ? (
                     ""
                   ) : (
                     <Form.Control
                       placeholder="Correo Electrónico"
-                      type="text"
+                      type="email"
+                      onChange={(e) => this.setValue("email", e.target.value)}
                     />
                   )}
-                  <Button className="button-primary">Acceder</Button>
+                  <Button
+                    className="button-primary"
+                    onClick={() => console.log(this.guardarEstudiantes())}
+                  >
+                    Acceder
+                  </Button>
                 </Form>
               </div>
               <div
