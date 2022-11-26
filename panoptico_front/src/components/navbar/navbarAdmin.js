@@ -11,11 +11,19 @@ import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserTie } from "@fortawesome/free-solid-svg-icons";
 import "./navbar.css";
+import Cookies from "universal-cookie";
+
+const cookies = new Cookies();
 
 export default class menuTablas extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+  }
+
+  Logout() {
+    cookies.remove("_s", { path: "/" });
+    window.location.reload();
   }
 
   render() {
@@ -58,7 +66,9 @@ export default class menuTablas extends React.Component {
                 <Row>#Administrador#</Row>
               </Dropdown.Header>
               <Dropdown.Divider />
-              <Dropdown.Item href="#/action-1">Cerrar Sesión</Dropdown.Item>
+              <Dropdown.Item onClick={() => this.Logout()}>
+                Cerrar Sesión
+              </Dropdown.Item>
             </DropdownButton>
           </Navbar.Collapse>
         </Container>
