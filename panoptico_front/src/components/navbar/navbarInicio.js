@@ -26,7 +26,7 @@ export default class navInicio extends React.Component {
     return (
       <Navbar fixed="top" bg="dark" variant="dark" expand="lg" id="navbar">
         <Container>
-          <Navbar.Brand id="pano-title" href="#home">
+          <Navbar.Brand id="pano-title">
             <img
               alt=""
               src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/052/519/original/icono.png?1668024209"
@@ -61,7 +61,7 @@ export default class navInicio extends React.Component {
                 className="nav-link"
                 to="/admin/ingresos/"
               >
-                Iniciar Sesión
+                Ingresar
               </NavLink>
             </DropdownButton>
           </Navbar.Collapse>

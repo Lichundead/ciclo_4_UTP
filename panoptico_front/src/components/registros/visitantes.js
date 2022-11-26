@@ -146,12 +146,12 @@ export default class VisitantesVista extends React.Component {
                 }}
                 className="button-div"
               >
-                <h2>
+                <h2 style={{ fontWeight: "bolder" }}>
                   {this.state.form === "entrar"
                     ? "¿Primera vez en el Museo?"
                     : "¿Ya habías venido?"}
                 </h2>
-                <h6>
+                <h6 style={{ fontWeight: "bolder" }}>
                   {this.state.form === "entrar"
                     ? "Regístrate para que puedas ingresar:"
                     : "Ingresa tu identificación para entrar al museo:"}

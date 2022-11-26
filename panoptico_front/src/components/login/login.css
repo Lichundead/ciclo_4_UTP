@@ -1,8 +1,9 @@
 .fondo-login {
     height: 1000px;
-    background-color: #E9E8E5;
+    background-image: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/054/910/original/3.png?1669048982);
     background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 #login-container {
