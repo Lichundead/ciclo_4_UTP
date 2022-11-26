@@ -115,7 +115,7 @@ export default class ingresos extends React.Component {
   reloadPage() {
     setTimeout(() => {
       window.location.reload();
-    }, 1000);
+    }, 2500);
   }
 
   render() {
@@ -133,7 +133,7 @@ export default class ingresos extends React.Component {
 
           <MessagePrompt
             text={this.state.message.text}
-            showt={this.state.message.show}
+            show={this.state.message.show}
             duration={2500}
             onExited={this.onExitedMessage}
           />
