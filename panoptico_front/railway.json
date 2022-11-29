@@ -1,0 +1,17 @@
+{
+  "$schema": "https://railway.app/railway.schema.json",
+  "install": {
+    "installer": "nixpacks",
+    "installCommand": "npm install --force"
+  },
+  "build": {
+    "builder": "nixpacks",
+    "buildCommand": "npm run build"
+  },
+  "deploy": {
+    "startCommand": "npm start",
+    "healthcheckPath": "/",
+    "healthcheckTimeout": 100,
+    "restartPolicyType": "never"
+  }
+}
