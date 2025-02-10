@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const uri =
-  "mongodb+srv://panoptico:panoptico1@panopticomongo.e5rc48m.mongodb.net/panoptico-db?retryWrites=true&w=majority";
+  "mongodb+srv:;
 
 exports.mongoConnect = () => {
   const mongoStringConnection = `${uri}`;
