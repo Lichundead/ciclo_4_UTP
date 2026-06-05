@@ -1,158 +1,80 @@
 const Ingreso = require("../models/ingresos.model");
 const Estudiante = require("../models/estudiantes.model");
 const Visitante = require("../models/visitantes.model");
-let date = new Date();
-date = new Date(date);
-date = date.toLocaleString();
-let response = {
-  msg: "",
-  exito: false,
+
+exports.create = async (req, res) => {
+  try {
+    const ingreso = new Ingreso({
+      fecha: new Date().toLocaleString(),
+      id_ingreso: req.body.id_ingreso,
+      rol: req.body.rol,
+    });
+    await ingreso.save();
+    res.json({ exito: true, msg: "El ingreso se guardó correctamente" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ exito: false, msg: "Error al guardar el ingreso" });
+  }
 };
 
-exports.create = function (req, res) {
-  let ingreso = new Ingreso({
-    fecha: date,
-    id_ingreso: req.body.id_ingreso,
-    rol: req.body.rol,
-  });
-
-  ingreso.save(function (err) {
-    if (err) {
-      console.error(err),
-        (response.exito = false),
-        (response.msg = "Error al guardar el ingreso");
-      res.json(response);
-      return;
-    }
-
-    (response.exito = true),
-      (response.msg = "El ingreso se guardó correctamente");
-    res.json(response);
-  });
+exports.createEst = async (req, res) => {
+  const { cedula, nombre, telefono, email } = req.body;
+  try {
+    await new Estudiante({ cedula, nombre, telefono, email }).save();
+    await new Ingreso({
+      fecha: new Date().toLocaleString(),
+      id_ingreso: cedula,
+      rol: "Estudiante",
+    }).save();
+    res.json({ exito: true, msg: "Estudiante e ingreso guardados correctamente" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ exito: false, msg: "Error al guardar el estudiante o el ingreso" });
+  }
 };
 
-exports.createEst = function (req, res) {
-  let cedula = req.body.cedula;
-  let nombre = req.body.nombre;
-  let telefono = req.body.telefono;
-  let email = req.body.email;
-
-  let estudiante = new Estudiante({
-    cedula: cedula,
-    nombre: nombre,
-    telefono: telefono,
-    email: email,
-  });
-
-  estudiante.save(function (err) {
-    if (err) {
-      console.error(err),
-        (response.exito = false),
-        (response.msg = "Error al ingresar al estudiante / ");
-      return;
-    }
-
-    (response.exito = true),
-      (response.msg = "El estudiante se ingresó correctamente / ");
-  });
-
-  let ingreso = new Ingreso({
-    fecha: date,
-    id_ingreso: cedula,
-    rol: "Estudiante",
-  });
-
-  ingreso.save(function (err) {
-    if (err) {
-      console.error(err),
-        (response.exito = false),
-        (response.msg = response.msg + "Error al guardar el ingreso");
-      res.json(response);
-      return;
-    }
-
-    (response.exito = true),
-      (response.msg = response.msg + "El ingreso se guardó correctamente");
-    res.json(response);
-  });
+exports.createVis = async (req, res) => {
+  const { cedula, nombre, telefono, email } = req.body;
+  try {
+    await new Visitante({ cedula, nombre, telefono, email }).save();
+    await new Ingreso({
+      fecha: new Date().toLocaleString(),
+      id_ingreso: cedula,
+      rol: "Visitante",
+    }).save();
+    res.json({ exito: true, msg: "Visitante e ingreso guardados correctamente" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ exito: false, msg: "Error al guardar el visitante o el ingreso" });
+  }
 };
 
-exports.createVis = function (req, res) {
-  let cedula = req.body.cedula;
-  let nombre = req.body.nombre;
-  let telefono = req.body.telefono;
-  let email = req.body.email;
-
-  let visitante = new Visitante({
-    cedula: cedula,
-    nombre: nombre,
-    telefono: telefono,
-    email: email,
-  });
-
-  visitante.save(function (err) {
-    if (err) {
-      console.error(err),
-        (response.exito = false),
-        (response.msg = "Error al ingresar al ingresar el visitante / ");
-      return;
-    }
-
-    (response.exito = true),
-      (response.msg = "El visitante se ingresó correctamente / ");
-  });
-
-  let ingreso = new Ingreso({
-    fecha: date,
-    id_ingreso: cedula,
-    rol: "Visitante",
-  });
-
-  ingreso.save(function (err) {
-    if (err) {
-      console.error(err),
-        (response.exito = false),
-        (response.msg = response.msg + "Error al guardar el ingreso");
-      res.json(response);
-      return;
-    }
-
-    (response.exito = true),
-      (response.msg = response.msg + "El ingreso se guardó correctamente");
-    res.json(response);
-  });
-};
-
-exports.find = function (req, res) {
-  Ingreso.find(function (err, ingresos) {
+exports.find = async (req, res) => {
+  try {
+    const ingresos = await Ingreso.find();
     res.json(ingresos);
-  });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json([]);
+  }
 };
 
-exports.findOne = function (req, res) {
-  Ingreso.findOne(
-    { id_ingreso: req.params.id_ingreso },
-    function (err, ingreso) {
-      res.json(ingreso);
-    }
-  );
+exports.findOne = async (req, res) => {
+  try {
+    const ingreso = await Ingreso.findOne({ id_ingreso: req.params.id_ingreso });
+    res.json(ingreso);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(null);
+  }
 };
 
-exports.remove = function (req, res) {
-  Ingreso.findOneAndRemove(
-    { id_ingreso: req.params.id_ingreso },
-    function (err) {
-      if (err) {
-        console.error(err),
-          (response.exito = false),
-          (response.msg = "Error al eliminar el ingreso");
-        res.json(response);
-        return;
-      }
-
-      (response.exito = true),
-        (response.msg = "El ingreso eliminado correctamente");
-      res.json(response);
-    }
-  );
+exports.remove = async (req, res) => {
+  try {
+    await Ingreso.findOneAndDelete({ id_ingreso: req.params.id_ingreso });
+    res.json({ exito: true, msg: "El ingreso eliminado correctamente" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ exito: false, msg: "Error al eliminar el ingreso" });
+  }
 };

@@ -1,81 +1,67 @@
 const Visitante = require("../models/visitantes.model");
-let response = {
-  msg: "",
-  exito: false,
+
+exports.create = async (req, res) => {
+  try {
+    const visitante = new Visitante({
+      cedula: req.body.cedula,
+      nombre: req.body.nombre,
+      telefono: req.body.telefono,
+      email: req.body.email,
+    });
+    await visitante.save();
+    res.json({ exito: true, msg: "El visitante se guardó correctamente" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ exito: false, msg: "Error al guardar el visitante" });
+  }
 };
 
-exports.create = function (req, res) {
-  let visitante = new Visitante({
-    cedula: req.body.cedula,
-    nombre: req.body.nombre,
-    telefono: req.body.telefono,
-    email: req.body.email,
-  });
-
-  visitante.save(function (err) {
-    if (err) {
-      console.error(err),
-        (response.exito = false),
-        (response.msg = "Error al guardar el visitante");
-      res.json(response);
-      return;
-    }
-
-    (response.exito = true),
-      (response.msg = "El visitante se guardó correctamente");
-    res.json(response);
-  });
-};
-
-exports.find = function (req, res) {
-  Visitante.find(function (err, visitantes) {
+exports.find = async (req, res) => {
+  try {
+    const visitantes = await Visitante.find();
     res.json(visitantes);
-  });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json([]);
+  }
 };
 
-exports.findOne = function (req, res) {
-  Visitante.findOne({ cedula: req.params.cedula }, function (err, visitante) {
+exports.findOne = async (req, res) => {
+  try {
+    const visitante = await Visitante.findOne({ cedula: req.params.cedula });
     res.json(visitante);
-  });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(null);
+  }
 };
 
-exports.update = function (req, res) {
-  let visitante = {
-    cedula: req.body.cedula,
-    nombre: req.body.nombre,
-    telefono: req.body.telefono,
-    email: req.body.email,
-  };
-
-  Visitante.findOneAndUpdate(
-    { cedula: req.params.cedula },
-    { $set: visitante },
-    function (err) {
-      if (err) {
-        console.error(err),
-          (response.exito = false),
-          (response.msg = "Error al modificar al visitante");
-        res.json(response);
-        return;
+exports.update = async (req, res) => {
+  try {
+    await Visitante.findOneAndUpdate(
+      { cedula: req.params.cedula },
+      {
+        $set: {
+          cedula: req.body.cedula,
+          nombre: req.body.nombre,
+          telefono: req.body.telefono,
+          email: req.body.email,
+        },
       }
-      (response.exito = true),
-        (response.msg = "El visitante se modificó correctamente");
-      res.json(response);
-    }
-  );
+    );
+    res.json({ exito: true, msg: "El visitante se modificó correctamente" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ exito: false, msg: "Error al modificar al visitante" });
+  }
 };
 
-exports.remove = function (req, res) {
-  Visitante.findOneAndRemove({ cedula: req.params.cedula }, function (err) {
-    if (err) {
-      console.error(err),
-        (response.exito = false),
-        (response.msg = "Error al eliminar al visitante");
-      res.json(response);
-      return;
-    }
-    (response.exito = true),
-      (response.msg = "El visitante se eliminó correctamente");
-    res.json(response);
-  });
+exports.remove = async (req, res) => {
+  try {
+    await Visitante.findOneAndDelete({ cedula: req.params.cedula });
+    res.json({ exito: true, msg: "El visitante se eliminó correctamente" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ exito: false, msg: "Error al eliminar al visitante" });
+  }
 };

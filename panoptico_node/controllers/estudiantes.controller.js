@@ -1,81 +1,67 @@
 const Estudiante = require("../models/estudiantes.model");
-let response = {
-  msg: "",
-  exito: false,
+
+exports.create = async (req, res) => {
+  try {
+    const estudiante = new Estudiante({
+      cedula: req.body.cedula,
+      nombre: req.body.nombre,
+      telefono: req.body.telefono,
+      email: req.body.email,
+    });
+    await estudiante.save();
+    res.json({ exito: true, msg: "El estudiante se ingresó correctamente" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ exito: false, msg: "Error al ingresar al estudiante" });
+  }
 };
 
-exports.create = function (req, res) {
-  let estudiante = new Estudiante({
-    cedula: req.body.cedula,
-    nombre: req.body.nombre,
-    telefono: req.body.telefono,
-    email: req.body.email,
-  });
-
-  estudiante.save(function (err) {
-    if (err) {
-      console.error(err),
-        (response.exito = false),
-        (response.msg = "Error al ingresar al estudiante");
-      res.json(response);
-      return;
-    }
-
-    (response.exito = true),
-      (response.msg = "El estudiante se ingresó correctamente");
-    res.json(response);
-  });
-};
-
-exports.find = function (req, res) {
-  Estudiante.find(function (err, estudiantes) {
+exports.find = async (req, res) => {
+  try {
+    const estudiantes = await Estudiante.find();
     res.json(estudiantes);
-  });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json([]);
+  }
 };
 
-exports.findOne = function (req, res) {
-  Estudiante.findOne({ cedula: req.params.cedula }, function (err, estudiante) {
+exports.findOne = async (req, res) => {
+  try {
+    const estudiante = await Estudiante.findOne({ cedula: req.params.cedula });
     res.json(estudiante);
-  });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(null);
+  }
 };
 
-exports.update = function (req, res) {
-  let estudiante = {
-    cedula: req.body.cedula,
-    nombre: req.body.nombre,
-    telefono: req.body.telefono,
-    email: req.body.email,
-  };
-
-  Estudiante.findOneAndUpdate(
-    { cedula: req.params.cedula },
-    { $set: estudiante },
-    function (err) {
-      if (err) {
-        console.error(err),
-          (response.exito = false),
-          (response.msg = "Error al modificar al estudiante");
-        res.json(response);
-        return;
+exports.update = async (req, res) => {
+  try {
+    await Estudiante.findOneAndUpdate(
+      { cedula: req.params.cedula },
+      {
+        $set: {
+          cedula: req.body.cedula,
+          nombre: req.body.nombre,
+          telefono: req.body.telefono,
+          email: req.body.email,
+        },
       }
-      (response.exito = true),
-        (response.msg = "El estudiante se modificó correctamente");
-      res.json(response);
-    }
-  );
+    );
+    res.json({ exito: true, msg: "El estudiante se modificó correctamente" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ exito: false, msg: "Error al modificar al estudiante" });
+  }
 };
 
-exports.remove = function (req, res) {
-  Estudiante.findOneAndRemove({ cedula: req.params.cedula }, function (err) {
-    if (err) {
-      console.error(err),
-        (response.exito = false),
-        (response.msg = "Error al eliminar al estudiante");
-      res.json(response);
-      return;
-    }
-    (response.exito = true),
-      (response.msg = "El estudiante se eliminó correctamente");
-    res.json(response);
-  });
+exports.remove = async (req, res) => {
+  try {
+    await Estudiante.findOneAndDelete({ cedula: req.params.cedula });
+    res.json({ exito: true, msg: "El estudiante se eliminó correctamente" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ exito: false, msg: "Error al eliminar al estudiante" });
+  }
 };

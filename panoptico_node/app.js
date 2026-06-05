@@ -1,54 +1,54 @@
-var createError = require("http-errors");
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
-var database = require("./config/database");
-var auth = require("./auth/main_auth");
-var cors = require("cors");
+require("dotenv").config();
+const createError = require("http-errors");
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const database = require("./config/database");
+const cors = require("cors");
 
-var visitantesRouter = require("./routes/visitantes.router");
-var ingresosRouter = require("./routes/ingresos.router");
-var estudiantesRouter = require("./routes/estudiantes.router");
-var adminsRouter = require("./routes/admins.router");
+const visitantesRouter = require("./routes/visitantes.router");
+const ingresosRouter = require("./routes/ingresos.router");
+const estudiantesRouter = require("./routes/estudiantes.router");
+const adminsRouter = require("./routes/admins.router");
+const auth = require("./auth/main_auth");
 
-var app = express();
+const app = express();
 
-// view engine setup
-app.set("views", path.join(__dirname, "views"));
+const corsOptions = {
+  origin: process.env.FRONTEND_URL || "http://localhost:3000",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
 
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.use(cors(corsOptions));
 
-app.use(cors());
-
-//Mongo conection:A partir de aqui comienza a llamar la conexión
 database.mongoConnect();
-app.use("/ingresos", ingresosRouter);
-app.use("/admins", adminsRouter);
-app.use(auth);
 
-//Router: A partir de aqui comienza el router
+// Rutas públicas
+app.use("/admins", adminsRouter);
+app.use("/ingresos", ingresosRouter);
+
+// Rutas protegidas
+app.use(auth);
 app.use("/visitas_guiadas", visitantesRouter);
 app.use("/estudiantes_inscritos", estudiantesRouter);
 
-// catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
 });
 
-// error handler
 app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get("env") === "development" ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render("error");
+  const isDev = req.app.get("env") === "development";
+  res.status(err.status || 500).json({
+    msg: err.message,
+    ...(isDev && { stack: err.stack }),
+  });
 });
 
 module.exports = app;

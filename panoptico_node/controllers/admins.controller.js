@@ -1,31 +1,25 @@
+require("dotenv").config();
 const Usuario = require("../models/admins.model");
-const crypto = require("crypto");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-exports.login = function (req, res, next) {
-  let hashedpass = crypto
-    .createHash("sha512")
-    .update(req.body.pass)
-    .digest("hex");
+exports.login = async (req, res) => {
+  try {
+    const usuario = await Usuario.findOne({ usuario: req.body.usuario });
 
-  Usuario.findOne(
-    { usuario: req.body.usuario, pass: hashedpass },
-    function (err, usuario) {
-      let response = {
-        token: null,
-      };
-
-      if (usuario !== null) {
-        response.token = jwt.sign(
-          {
-            id: usuario._id,
-            usuario: usuario.usuario,
-          },
-          "__recret__",
-          { expiresIn: "10m" }
-        );
-      }
-      res.json(response);
+    if (!usuario || !(await bcrypt.compare(req.body.pass, usuario.pass))) {
+      return res.json({ token: null });
     }
-  );
+
+    const token = jwt.sign(
+      { id: usuario._id, usuario: usuario.usuario },
+      process.env.JWT_SECRET,
+      { expiresIn: "10m" }
+    );
+
+    res.json({ token });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ token: null });
+  }
 };
