@@ -6,7 +6,7 @@ const auth = require("../auth/main_auth");
 // Rutas públicas — registro de entrada sin autenticación
 router.post("/registros_estudiantes/", ingresosController.createEst);
 router.post("/registros_visitantes/", ingresosController.createVis);
-router.post("/", ingresosController.create);
+router.post("/", auth, ingresosController.create);
 
 // Rutas protegidas — solo admins autenticados
 router.get("/", auth, ingresosController.find);
