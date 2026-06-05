@@ -19,33 +19,47 @@ exports.create = async (req, res) => {
 
 exports.createEst = async (req, res) => {
   const { cedula, nombre, telefono, email } = req.body;
+  if (!cedula) return res.status(400).json({ exito: false, msg: "Cédula requerida" });
   try {
-    await new Estudiante({ cedula, nombre, telefono, email }).save();
+    const existe = await Estudiante.findOne({ cedula });
+    if (!existe) {
+      if (!nombre || !telefono) {
+        return res.status(400).json({ exito: false, msg: "Nombre y teléfono requeridos para nuevo estudiante" });
+      }
+      await new Estudiante({ cedula, nombre, telefono, email }).save();
+    }
     await new Ingreso({
       fecha: new Date().toLocaleString(),
       id_ingreso: cedula,
       rol: "Estudiante",
     }).save();
-    res.json({ exito: true, msg: "Estudiante e ingreso guardados correctamente" });
+    res.json({ exito: true, msg: "Ingreso registrado correctamente" });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ exito: false, msg: "Error al guardar el estudiante o el ingreso" });
+    res.status(500).json({ exito: false, msg: "Error al registrar el ingreso" });
   }
 };
 
 exports.createVis = async (req, res) => {
   const { cedula, nombre, telefono, email } = req.body;
+  if (!cedula) return res.status(400).json({ exito: false, msg: "Cédula requerida" });
   try {
-    await new Visitante({ cedula, nombre, telefono, email }).save();
+    const existe = await Visitante.findOne({ cedula });
+    if (!existe) {
+      if (!nombre || !telefono) {
+        return res.status(400).json({ exito: false, msg: "Nombre y teléfono requeridos para nuevo visitante" });
+      }
+      await new Visitante({ cedula, nombre, telefono, email }).save();
+    }
     await new Ingreso({
       fecha: new Date().toLocaleString(),
       id_ingreso: cedula,
       rol: "Visitante",
     }).save();
-    res.json({ exito: true, msg: "Visitante e ingreso guardados correctamente" });
+    res.json({ exito: true, msg: "Ingreso registrado correctamente" });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ exito: false, msg: "Error al guardar el visitante o el ingreso" });
+    res.status(500).json({ exito: false, msg: "Error al registrar el ingreso" });
   }
 };
 
